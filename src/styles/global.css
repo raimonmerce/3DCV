@@ -1,0 +1,10 @@
+.maindiv {
+    width: 100vw; 
+    height: 100vh; 
+    overflow: hidden;
+}
+
+:root {
+    --color-primary: #ffacff;
+    --color-secondary: #d8f37b;
+}

@@ -1,0 +1,1 @@
+export type ModeType = 'InitialBox' | 'OpenBox' | 'Teseract';
