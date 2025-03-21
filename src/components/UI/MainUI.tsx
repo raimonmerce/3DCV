@@ -56,16 +56,12 @@ export default function MainUI({ mode, setMode, room, setRoom }: MainUIProps) {
                     BACK
                 </Button>
             }
-            {mode === 'OpenBox' &&
+            {mode === 'OpenBox' && !mode &&
                 <Button position="left" onClick={() => setMode('InitialBox')}>
                     BACK
                 </Button>
             } 
-            {mode === 'Teseract' &&
-                <Button position="left" onClick={() => setMode('OpenBox')}>
-                    BACK
-                </Button>
-            }
+
             <Button position="left" top={'240px'} onClick={() => goToRoom('Experience')}>
                 EXPERIENCE
             </Button>
