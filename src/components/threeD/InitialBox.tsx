@@ -10,10 +10,8 @@ export default function InitialBox({
     setMode
 }: InitialBoxProps) {
 
-    // State to handle hover effect
     const [hovered, setHovered] = useState(false);
 
-    // Handle hover state (show outline)
     const handlePointerOver = () => {
         setHovered(true);
     };
@@ -22,7 +20,6 @@ export default function InitialBox({
         setHovered(false);
     };
 
-    // Handle click to set mode
     const handleClick = () => {
         setMode("OpenBox");
     };

@@ -20,9 +20,7 @@ export default function Rig({
     const { controls, scene } = useThree();
 
     useEffect(() => {
-        console.log('controls', room)
         if (room) {
-            console.log("go to room")
             const active = scene.getObjectByName(room);
             if (active) {
                 active.parent?.localToWorld(position.set(0, 0, 1));
