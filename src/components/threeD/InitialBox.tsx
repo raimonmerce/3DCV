@@ -35,7 +35,7 @@ export default function InitialBox({
             onClick={handleClick}
         >
             <boxGeometry args={[2, 2, 2]} />
-            <meshPhongMaterial color={"orange"} />
+            <meshPhongMaterial color={'#98FB98'} />
             {hovered && <Outlines thickness={10} color="white" />}
         </mesh>
     );

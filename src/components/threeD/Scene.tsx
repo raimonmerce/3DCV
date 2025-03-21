@@ -1,57 +1,27 @@
-import * as THREE from 'three'
-import { useEffect, useState } from 'react'
-import { Canvas, useThree } from "@react-three/fiber";
-import { CameraControls, Stats } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Stats } from "@react-three/drei";
 import Teseract from "./Teseract";
 import InitialBox from "./InitialBox";
 import CircularText from "./CircularText";
-// import Tween from "./Tween";
-import { useRoute } from 'wouter'
+import Tween from "./Tween";
+import Rig from './Rig';  
 import { getCssVariableValue } from '../../utils/utils';
-import { ModeType } from '@/types/types';
-
-interface RigProps {
-    position?: THREE.Vector3
-    focus?: THREE.Vector3
-}
+import { ModeType, RoomType } from '@/types/types';
 
 type SceneProps = {
     mode: ModeType;
     setMode: React.Dispatch<React.SetStateAction<ModeType>>;
+    room: RoomType | null;
+    setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
 };
 
 export default function Scene({ 
     mode, 
-    setMode
+    setMode,
+    room,
+    setRoom
   }: SceneProps) {
-    function Rig({ position = new THREE.Vector3(0, 0, 2), focus = new THREE.Vector3(0, 0, 0) }: RigProps) {
-        const { controls, scene } = useThree()
-        const [, params] = useRoute('/:id')
-      
-        useEffect(() => {
-            console.log('params', params)
-            if (params?.id) {
-                const active = scene.getObjectByName(params.id)
-                if (active) {
-                active.parent?.localToWorld(position.set(0, 1, 0.25))
-                active.parent?.localToWorld(focus.set(0, 0, -1))
-                }
-                controls?.setLookAt(...position.toArray(), ...focus.toArray(), true)
-                //controls?.setOrbitPoint(focus.x, focus.y, focus.z)
-            } else {
-                controls?.setLookAt(0, 0, 6, 0, 0, -1, true)
-            }
-        }, [params?.id, scene, position, focus, controls])
-      
-        return <CameraControls 
-            makeDefault 
-            minPolarAngle={0} 
-            maxPolarAngle={Math.PI / 2} 
-            minDistance={1}
-            maxDistance={10}
-        />
-      }
-    
+   
     return (
         <Canvas 
             style={{
@@ -60,13 +30,14 @@ export default function Scene({
             }}
             camera={{ position: [2, 2, 5] }}
         >
-            {/* <Tween /> */}
+            <Tween />
             <ambientLight intensity={0.5} />
-            <spotLight position={[2, 2, 2]} />
+            <pointLight intensity={10} position={[3, 3, 3]} />
+            <pointLight intensity={10} position={[-3, -3, -3]} />
             {mode === 'InitialBox' && <InitialBox setMode={setMode}/>}
-            <Teseract setMode={setMode}/>
+            <Teseract mode={mode} room={room} setRoom={setRoom}/>
             {/* <CircularText rotation={[-Math.PI/2, 0, 0]}/> */}
-            <Rig/>
+            <Rig mode={mode} room={room}/>
             <Stats/>
         </Canvas>
     );

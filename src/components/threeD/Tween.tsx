@@ -1,10 +1,13 @@
-import * as TWEEN from "@tweenjs/tween.js";
-import { useFrame } from "@react-three/fiber";
+import { useFrame } from '@react-three/fiber';
+import * as TWEEN from '@tweenjs/tween.js';
 
 export default function Tween() {
-    // useFrame(() => {
-    //     TWEEN.update()
-    //     console.log("Update")
-    // })
-    return(<></>)
+
+    useFrame(() => {
+        TWEEN.update();
+    });
+
+    return (
+        <></>
+    );
 }
