@@ -1,6 +1,7 @@
 import React from 'react';
-import Button from './Button';
+import ButtonNav from './ButtonNav';
 import { ModeType, RoomType } from '@/types/types';
+import './NavigationPanel.css'; 
 
 type NavigationPanelProps = {
   mode: ModeType;
@@ -21,42 +22,13 @@ const NavigationPanel = ({ mode, setMode, room, setRoom }: NavigationPanelProps)
   };
 
   return (
-    <div
-      style={{
-        position: 'absolute',
-        zIndex: 1,
-        color: 'white',
-        width: '100vw',
-        height: '100vh',
-        pointerEvents: 'none',
-      }}
-    >
-        {room ? 
-        <Button position="left" fontSize={'40px'} svgPath={mode === 'Teseract'? "/cube.svg" : "/logo.svg"} onClick={() => setRoom(null)}>
-            {'<'}
-        </Button>
-        : 
-        <Button position="right" svgPath={mode === 'Teseract'? "/logo.svg" : "/cube.svg"} onClick={() => setMode(mode === 'Teseract'? 'OpenBox' : 'Teseract')}/>
-        }
-
-      <Button position="left" top="240px" onClick={() => goToRoom('Experience')}>
-        EXPERIENCE
-      </Button>
-      <Button position="left" top="280px" onClick={() => goToRoom('Projects')}>
-        PROJECTS
-      </Button>
-      <Button position="left" top="320px" onClick={() => goToRoom('Studies')}>
-        STUDIES
-      </Button>
-      <Button position="left" top="360px" onClick={() => goToRoom('AboutMe')}>
-        ABOUT ME
-      </Button>
-      <Button position="left" top="400px" onClick={() => goToRoom('CV')}>
-        CV
-      </Button>
-      <Button position="left" top="440px" onClick={() => goToRoom('Contact')}>
-        CONTACT
-      </Button>
+    <div className="navigation-panel">
+      <ButtonNav text={"EXPERIENCE"} selected={room === "Experience"} onClick={() => goToRoom('Experience')}/>
+      <ButtonNav text={"PROJECTS"} selected={room === "Projects"} onClick={() => goToRoom('Projects')}/>
+      <ButtonNav text={"STUDIES"} selected={room === "Studies"} onClick={() => goToRoom('Studies')}/>
+      <ButtonNav text={"ABOUT ME"} selected={room === "AboutMe"} onClick={() => goToRoom('AboutMe')}/>
+      <ButtonNav text={"CONTACT"} selected={room === "Contact"} onClick={() => goToRoom('Contact')}/>
+      <ButtonNav text={"CV"} selected={room === "CV"} onClick={() => goToRoom('CV')}/>
     </div>
   );
 };

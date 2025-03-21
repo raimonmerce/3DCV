@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
 
-type ButtonProps = {
+type ButtonIconProps = {
   position: 'left' | 'right';
-  top?: string;
   onClick: () => void;
-  children?: React.ReactNode;
   svgPath?: string;
-  fontSize?: string;
 };
 
-const Button = ({ position, top = '40px', onClick, children, svgPath, fontSize = '20px' }: ButtonProps) => {
+const ButtonIcon = ({ position, onClick, svgPath}: ButtonIconProps) => {
   const [hovered, setHovered] = useState(false);
 
   return (
     <a
       style={{
         position: 'absolute',
-        top: top,
+        top: '40px',
         [position]: 40,
-        fontSize: fontSize,
+        fontSize: '20px',
         pointerEvents: 'auto',
         cursor: 'pointer',
         textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
@@ -46,9 +43,8 @@ const Button = ({ position, top = '40px', onClick, children, svgPath, fontSize =
             }}
         />
       )}
-      {children}
     </a>
   );
 };
 
-export default Button;
+export default ButtonIcon;

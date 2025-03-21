@@ -35,7 +35,7 @@ export default function Scene({
             <Teseract mode={mode} setMode={setMode} room={room} setRoom={setRoom}/>
             {/* <CircularText rotation={[-Math.PI/2, 0, 0]}/> */}
             <Rig mode={mode} room={room}/>
-            <Stats/>
+            {/* <Stats/> */}
         </Canvas>
     );
 }

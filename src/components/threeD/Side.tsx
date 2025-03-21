@@ -5,7 +5,8 @@ import * as TWEEN from '@tweenjs/tween.js';
 import { ModeType, RoomType } from '@/types/types';
 
 type SideProps = {
-  name: string;
+  id: string;
+  title: string;
   bg?: string;
   mode: ModeType;
   room: RoomType | null;
@@ -14,7 +15,8 @@ type SideProps = {
 };
 
 export default function Side({ 
-  name, 
+  id,
+  title, 
   bg = '#f0f0f0', 
   mode,
   room,
@@ -56,18 +58,18 @@ export default function Side({
 
   const handleDoubleClick = useCallback(() => {
     if (mode === "InitialBox") return
-    setRoom(name as RoomType);
-  }, [mode, setRoom, name]);
+    setRoom(id as RoomType);
+  }, [mode, setRoom, id]);
 
   useEffect(() => {
     if (!roomMesh.current || !portal.current) return
     const from = { ...roomMesh.current.scale, blend: portal.current.blend }
     
-    const to = room === name 
+    const to = room === id 
       ? { x: 6, y: 6, z: 6, blend: 1 } 
       : { x: 1, y: 1, z: 1, blend: 0 };
 
-    const delay = room === name? 2000 : 0
+    const delay = room === id? 2000 : 0
 
     if (
       from.x === to.x && 
@@ -91,7 +93,7 @@ export default function Side({
     return () => {
       tween.stop();
     };
-  }, [name, room]);
+  }, [id, room]);
 
   return (
     <group>
@@ -102,13 +104,13 @@ export default function Side({
             anchorY="top" 
             anchorX="left" 
             lineHeight={0.8} 
-            position={[-1, 1, 0.01]} 
+            position={[-0.9, 0.9, 0.01]} 
             material-toneMapped={false}
           >
-            {name}
+            {title}
           </Text>
           <mesh
-            name={name}
+            name={id}
             onPointerOver={handlePointerOver}
             onPointerOut={handlePointerOut}
             onDoubleClick={handleDoubleClick}

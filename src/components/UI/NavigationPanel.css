@@ -1,0 +1,18 @@
+.navigation-panel {
+    position: absolute;
+    left: 20px;
+    top: 30vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .navigation-panel {
+      bottom: 40px;
+      top: auto;
+      flex-direction: row;
+      gap: 5px;
+    }
+  }

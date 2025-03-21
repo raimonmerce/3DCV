@@ -34,9 +34,7 @@ export default function Teseract({
 
     useEffect(() => {
         if (!gear1.current || !['InitialBox', 'OpenBox', 'Teseract'].includes(mode)) return;
-    
-        console.log("mode", mode);
-    
+        
         const modeConfig = {
             InitialBox: { pos: -2, rot: -Math.PI / 2 },
             OpenBox: { pos: -1, rot: 0 },
@@ -70,7 +68,8 @@ export default function Teseract({
             {mode === 'InitialBox' && animationFinished && <InitialBox setMode={setMode}/>}
             <group ref={box} position={[0, 0, -2]} >
                 <Side
-                    name="AboutMe"
+                    id="AboutMe"
+                    title="About Me"
                     bg="indianred" 
                     mode={mode}
                     room={room}
@@ -81,7 +80,8 @@ export default function Teseract({
                 <group ref={gear1} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                     <group position={[1, 0, 0]}>
                         <Side 
-                            name="Experience"
+                            id="Experience"
+                            title="Experience"
                             bg="lightblue" 
                             mode={mode}
                             room={room}
@@ -92,7 +92,8 @@ export default function Teseract({
                         <group ref={gear2} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                             <group position={[1, 0, 0]}>
                                 <Side 
-                                    name="Projects"
+                                    id="Projects"
+                                    title="Projects"
                                     bg="lightgreen" 
                                     mode={mode}
                                     room={room}
@@ -105,7 +106,8 @@ export default function Teseract({
                         <group ref={gear3} position={[0, -1, 0]} rotation={[-Math.PI/2, 0, 0]}>  
                             <group position={[0, -1, 0]}>
                                 <Side 
-                                    name="Contact"
+                                    id="Contact"
+                                    title="Contact"
                                     bg="hotpink" 
                                     mode={mode}
                                     room={room}
@@ -120,7 +122,8 @@ export default function Teseract({
                 <group ref={gear4} position={[-1, 0, 0]} rotation={[0, Math.PI/2, 0]}>
                     <group position={[-1, 0, 0]}>
                         <Side 
-                            name="Studies"
+                            id="Studies"
+                            title="Studies"
                             bg="aquamarine" 
                             mode={mode}
                             room={room}
@@ -133,7 +136,8 @@ export default function Teseract({
                 <group ref={gear5} position={[0, 1, 0]} rotation={[Math.PI/2, 0, 0]}>
                     <group position={[0, 1, 0]}>
                         <Side 
-                            name="CV"
+                            id="CV"
+                            title="CV"
                             bg="orange"
                             mode={mode}
                             room={room} 
