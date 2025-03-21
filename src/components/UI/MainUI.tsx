@@ -8,11 +8,11 @@ type MainUIProps = {
 };
 
 // Reusable Button component with hover effects
-const Button = ({ position, onClick, children }: { position: 'left' | 'right'; onClick: () => void; children: React.ReactNode }) => (
+const Button = ({ position, top = '40px', onClick, children }: { position: 'left' | 'right'; top?: string; onClick: () => void; children: React.ReactNode }) => (
     <a
         style={{
             position: 'absolute',
-            top: 40,
+            top: top,
             [position]: 40,
             fontSize: '20px',
             pointerEvents: 'auto',
@@ -34,7 +34,11 @@ const Button = ({ position, onClick, children }: { position: 'left' | 'right'; o
 );
 
 export default function MainUI({ mode, setMode, room, setRoom }: MainUIProps) {
-    const isInitialOrOpenBox = mode !== 'InitialBox' && mode !== 'OpenBox' && mode !== 'Teseract';
+
+    function goToRoom( room : RoomType) {
+        if (mode == "InitialBox") setMode('OpenBox')
+        setRoom(room)
+    }
 
     return (
         <div
@@ -47,29 +51,39 @@ export default function MainUI({ mode, setMode, room, setRoom }: MainUIProps) {
                 pointerEvents: 'none',
             }}
         >
-            {room ? (
-                <Button position="left" onClick={() => setRoom(null)}>
+            {(room || mode === 'Teseract') &&
+                <Button position="left" onClick={() => setMode('OpenBox')}>
                     BACK
                 </Button>
-            ) : (
-                <>
-                    {mode === 'OpenBox' && (
-                        <>
-                            <Button position="left" onClick={() => setMode('InitialBox')}>
-                                BACK
-                            </Button>
-                            <Button position="right" onClick={() => setMode('Teseract')}>
-                                FOLD
-                            </Button>
-                        </>
-                    )}
-                    {mode === 'Teseract' && (
-                        <Button position="left" onClick={() => setMode('OpenBox')}>
-                            BACK
-                        </Button>
-                    )}
-                </>
-            )}
+            }
+            {mode === 'OpenBox' &&
+                <Button position="left" onClick={() => setMode('InitialBox')}>
+                    BACK
+                </Button>
+            } 
+            {mode === 'Teseract' &&
+                <Button position="left" onClick={() => setMode('OpenBox')}>
+                    BACK
+                </Button>
+            }
+            <Button position="left" top={'240px'} onClick={() => goToRoom('Experience')}>
+                EXPERIENCE
+            </Button>
+            <Button position="left" top={'280px'} onClick={() => goToRoom('Projects')}>
+                PROJECTS
+            </Button>
+            <Button position="left" top={'320px'} onClick={() => goToRoom('Studies')}>
+                STUDIES
+            </Button>
+            <Button position="left" top={'360px'} onClick={() => goToRoom('AboutMe')}>
+                ABOUT ME
+            </Button>
+            <Button position="left" top={'400px'} onClick={() => goToRoom('CV')}>
+                CV
+            </Button>
+            <Button position="left" top={'440px'} onClick={() => goToRoom('Contact')}>
+                CONTACT
+            </Button>
         </div>
     );
 }

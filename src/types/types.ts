@@ -4,6 +4,7 @@ export type ModeType =
     'Teseract';
 
 export type RoomType = 
+    'CV' | 
     'AboutMe' | 
     'Contact' | 
     'Experience' | 

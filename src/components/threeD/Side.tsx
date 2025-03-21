@@ -26,22 +26,26 @@ export default function Side({
   const portal = useRef<any>(null);
   const roomMesh = useRef<Mesh>(null);
   const emissiveMesh = useRef<Mesh>(null);
-  const hoverStartTime = useRef<number | null>(null);
 
   useCursor(isHovered);
 
-  useFrame(({ clock }) => {
-    if (isHovered && emissiveMesh.current) {
-      if (hoverStartTime.current === null) {
-        hoverStartTime.current = clock.elapsedTime;
-      }
-      const elapsed = clock.elapsedTime - hoverStartTime.current;
-      const material = emissiveMesh.current.material as MeshStandardMaterial;
-      material.opacity = Math.sin(elapsed * Math.PI);
-    } else {
-      hoverStartTime.current = null;
-    }
-  });
+  useEffect(() => {
+    const material = emissiveMesh.current?.material as MeshStandardMaterial;
+    if (!material || !isHovered) return
+    const tween = new TWEEN.Tween({ value: 0 })
+    .to({ value: 1 }, 750)
+    .easing(TWEEN.Easing.Quadratic.InOut)
+    .onUpdate((obj) => {
+      material.opacity = obj.value
+    })
+    .repeat(Infinity)
+    .yoyo(true)
+    .start();
+
+    return () => {
+      tween.stop();
+    };
+  }, [isHovered]);
 
   const handlePointerOver = useCallback(() => {
     setIsHovered(true);
@@ -52,8 +56,9 @@ export default function Side({
   }, []);
 
   const handleDoubleClick = useCallback(() => {
+    if (mode === "InitialBox") return
     setRoom(name as RoomType);
-  }, [setRoom, name]);
+  }, [mode, setRoom, name]);
 
   useEffect(() => {
     if (!roomMesh.current || !portal.current) return

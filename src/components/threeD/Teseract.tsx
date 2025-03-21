@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Side from "./Side";
 import AboutMe from "./rooms/AboutMe";
 import Contact from "./rooms/Contact";
 import Experience from "./rooms/Experience";
-import Intro from "./rooms/Intro";
+import CV from "./rooms/CV";
 import Projects from "./rooms/Projects";
 import Studies from "./rooms/Studies";
 import InitialBox from "./InitialBox";
@@ -24,6 +24,7 @@ export default function Teseract({
     room,
     setRoom
 }: TeseractBoxProps) {
+    const [animationFinished, setAnimationFinished] = useState(true);
     const gear1 = useRef<Mesh>(null);
     const gear2 = useRef<Mesh>(null);
     const gear3 = useRef<Mesh>(null);
@@ -47,7 +48,7 @@ export default function Teseract({
         const initialRotation = gear1.current?.rotation.y;
     
         if (initialPosition === undefined || initialRotation === undefined) return;
-    
+        setAnimationFinished(false)
         const tween = new TWEEN.Tween({ pos: initialPosition, rot: initialRotation })
             .to({ pos, rot }, 2000)
             .easing(TWEEN.Easing.Quadratic.Out)
@@ -58,22 +59,24 @@ export default function Teseract({
                 gear3.current?.rotation.set(obj.rot, 0, 0);
                 gear4.current?.rotation.set(0, -obj.rot, 0);
                 gear5.current?.rotation.set(-obj.rot, 0, 0);
+            }).onComplete(() => {
+                setAnimationFinished(true)
             })
             .start();
     }, [mode]);
 
     return (
         <>
-            {mode === 'InitialBox' && <InitialBox setMode={setMode}/>}
+            {mode === 'InitialBox' && animationFinished && <InitialBox setMode={setMode}/>}
             <group ref={box} position={[0, 0, -2]} >
-                <Side 
-                    name="Intro"
-                    bg="orange"
+                <Side
+                    name="AboutMe"
+                    bg="indianred" 
                     mode={mode}
-                    room={room} 
+                    room={room}
                     setRoom={setRoom}
                 >
-                    <Intro/>
+                    <AboutMe/>
                 </Side>
                 <group ref={gear1} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                     <group position={[1, 0, 0]}>
@@ -129,14 +132,14 @@ export default function Teseract({
                     </group>
                 <group ref={gear5} position={[0, 1, 0]} rotation={[Math.PI/2, 0, 0]}>
                     <group position={[0, 1, 0]}>
-                        <Side
-                            name="AboutMe"
-                            bg="indianred" 
+                        <Side 
+                            name="CV"
+                            bg="orange"
                             mode={mode}
-                            room={room}
+                            room={room} 
                             setRoom={setRoom}
                         >
-                            <AboutMe/>
+                            <CV/>
                         </Side>
                     </group>
                 </group>

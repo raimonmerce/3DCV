@@ -1,8 +1,8 @@
-type IntroProps = {
+type CVProps = {
 };
 
-export default function Intro({ 
-}: IntroProps) {
+export default function CV({ 
+}: CVProps) {
 
   return (
     <>

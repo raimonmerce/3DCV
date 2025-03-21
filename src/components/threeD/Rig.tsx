@@ -27,15 +27,15 @@ export default function Rig({
                 active.parent?.localToWorld(focus.set(0, 0, -1));
             }
             controls?.setLookAt(...position.toArray(), ...focus.toArray(), true);
-        } else if (mode === 'InitialBox') controls?.setLookAt(4, 4, 4, 0, 0, -1, true);
+        } else if (mode === 'InitialBox') controls?.setLookAt(-4, 4, 4, 0, 0, -1, true);
         else if (mode === 'OpenBox') controls?.setLookAt(1, 0, 4, 1, 0, -1, true);
-        else if (mode === 'Teseract') controls?.setLookAt(-4, 4, 4, 0, 0, -1, true);  
+        else if (mode === 'Teseract') controls?.setLookAt(4, 4, 4, 0, 0, -1, true);  
     }, [mode, room, scene, position, focus, controls]);
 
     return (
         <CameraControls 
             mouseButtons={{
-                left: mode === "OpenBox" 
+                left: mode === "OpenBox" && !room
                     ? 2
                     : 1,
                 middle: 16,
@@ -43,19 +43,19 @@ export default function Rig({
                 wheel: 16,
             }}
             touches={{
-                one: mode === "OpenBox" 
+                one: mode === "OpenBox" && !room
                     ? 128
                     : 64,
                 two: 2048,
                 three: 0,
             }}
             makeDefault 
-            minPolarAngle={mode === "OpenBox" ? Math.PI / 2 : 0} // Lock vertical angle in OpenBox
-            maxPolarAngle={mode === "OpenBox" ? Math.PI / 2 : Math.PI} 
-            minAzimuthAngle={mode === "OpenBox" ? 0 : -Infinity} // Lock vertical angle in OpenBox
-            maxAzimuthAngle={mode === "OpenBox" ? 0 : Infinity} 
-            minDistance={mode === "OpenBox" ? 1 : 4}
-            maxDistance={mode === "OpenBox" ? 5 : 7}
+            minPolarAngle={mode === "OpenBox" && !room ? Math.PI / 2 : 0} // Lock vertical angle in OpenBox
+            maxPolarAngle={mode === "OpenBox" && !room? Math.PI / 2 : Math.PI} 
+            minAzimuthAngle={mode === "OpenBox" && !room? 0 : -Infinity} // Lock vertical angle in OpenBox
+            maxAzimuthAngle={mode === "OpenBox" && !room? 0 : Infinity} 
+            minDistance={mode === "OpenBox" && !room? 1 : 4}
+            maxDistance={mode === "OpenBox" && !room? 5 : 7}
             smoothTime={1}
         />
     );
