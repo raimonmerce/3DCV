@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlines } from '@react-three/drei';
 import { ModeType } from '@/types/types';
 import * as TWEEN from '@tweenjs/tween.js';
