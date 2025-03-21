@@ -49,7 +49,7 @@ export default function Teseract({
     
         if (initialPosition === undefined || initialRotation === undefined) return;
         setAnimationFinished(false)
-        const tween = new TWEEN.Tween({ pos: initialPosition, rot: initialRotation })
+        new TWEEN.Tween({ pos: initialPosition, rot: initialRotation })
             .to({ pos, rot }, 2000)
             .easing(TWEEN.Easing.Quadratic.Out)
             .onUpdate((obj) => {

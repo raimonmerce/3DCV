@@ -9,7 +9,7 @@ type CircularTextProps = {
 
 export default function CircularText({position = [0, 0, 0], rotation = [0, 0, 0]}: CircularTextProps) {
     const [rotationText, setRotationText] = useState(0);
-    useFrame((state, delta) => {
+    useFrame((_state, delta) => {
         setRotationText((prev) => prev + delta); // Rotate HTML content
     });
 

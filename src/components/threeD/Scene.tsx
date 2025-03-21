@@ -1,7 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { Stats } from "@react-three/drei";
 import Teseract from "./Teseract";
-import CircularText from "./CircularText";
 import Tween from "./Tween";
 import Rig from './Rig';  
 import { getCssVariableValue } from '../../utils/utils';

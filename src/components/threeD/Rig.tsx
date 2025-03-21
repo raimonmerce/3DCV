@@ -26,10 +26,10 @@ export default function Rig({
                 active.parent?.localToWorld(position.set(0, 0, 1));
                 active.parent?.localToWorld(focus.set(0, 0, -1));
             }
-            controls?.setLookAt(...position.toArray(), ...focus.toArray(), true);
-        } else if (mode === 'InitialBox') controls?.setLookAt(-4, 4, 4, 0, 0, -1, true);
-        else if (mode === 'OpenBox') controls?.setLookAt(1, 0, 4, 1, 0, -1, true);
-        else if (mode === 'Teseract') controls?.setLookAt(4, 4, 4, 0, 0, -1, true);  
+            (controls as any)?.setLookAt(...position.toArray(), ...focus.toArray(), true);
+        } else if (mode === 'InitialBox') (controls as any)?.setLookAt(-4, 4, 4, 0, 0, -1, true);
+        else if (mode === 'OpenBox') (controls as any)?.setLookAt(1, 0, 4, 1, 0, -1, true);
+        else if (mode === 'Teseract') (controls as any)?.setLookAt(4, 4, 4, 0, 0, -1, true);  
     }, [mode, room, scene, position, focus, controls]);
 
     return (

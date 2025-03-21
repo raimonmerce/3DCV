@@ -1,5 +1,4 @@
 import { useRef, useState, ReactNode, useEffect, useCallback } from 'react';
-import { useFrame } from '@react-three/fiber';
 import { useCursor, MeshPortalMaterial, Text } from '@react-three/drei';
 import { Mesh, MeshStandardMaterial } from 'three';
 import * as TWEEN from '@tweenjs/tween.js';
@@ -115,7 +114,7 @@ export default function Side({
             onDoubleClick={handleDoubleClick}
           >
             <planeGeometry args={[2, 2]} />
-            <MeshPortalMaterial ref={portal} side={0}>
+            <MeshPortalMaterial ref={portal} side={0} resolution={512} blur={0}>
               <ambientLight intensity={0.5} />
               <pointLight intensity={1.0}/>
               <mesh ref={roomMesh} position={[0, 0, -1]}>
