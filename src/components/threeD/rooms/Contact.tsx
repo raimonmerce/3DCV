@@ -1,3 +1,6 @@
+import { assets } from '../../../assets/assets'
+import GLBModel from '../GLBModel';
+
 type ContactProps = {
 };
 
@@ -6,11 +9,7 @@ export default function Contact({
 
   return (
     <>
-        {/* Sphere */}
-        <mesh position={[0,0,-1]}>
-            <sphereGeometry args={[0.7, 32, 32]} />
-            <meshToonMaterial color="blue" />
-        </mesh>
+        <GLBModel url={assets.models.contact} position={[0, -0.6, -1]} scale={[0.6, 0.6, 0.6]}/>
     </>
   );
 }

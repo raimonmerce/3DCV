@@ -1,3 +1,6 @@
+import { assets } from '../../../assets/assets'
+import GLBModel from '../GLBModel';
+
 type ExperienceProps = {
 };
 
@@ -6,11 +9,7 @@ export default function Experience({
 
   return (
     <>
-        {/* Torus */}
-        <mesh position={[0,0,-1]}>
-            <torusGeometry args={[0.6, 0.2, 16, 100]} />
-            <meshToonMaterial color="purple" />
-        </mesh>
+        <GLBModel url={assets.models.experience} position={[0, -0.6, -1]} scale={[0.6, 0.6, 0.6]}/>
     </>
   );
 }

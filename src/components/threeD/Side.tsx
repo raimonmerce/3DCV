@@ -117,8 +117,8 @@ export default function Side({
           >
             <planeGeometry args={[2, 2]} />
             <MeshPortalMaterial ref={portal} side={0} resolution={512} blur={0}>
-              <ambientLight intensity={0.5} />
-              <pointLight intensity={1.0}/>
+              <ambientLight intensity={0.8} />
+              <pointLight intensity={2.0} position={[0,0,0]}/>
               <mesh ref={roomMesh} position={[0, 0, -1]}>
                 <boxGeometry args={[2, 2, 2]} />
                 <meshToonMaterial color={bg} side={1}/>

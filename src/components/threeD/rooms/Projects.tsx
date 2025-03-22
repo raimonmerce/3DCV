@@ -1,3 +1,6 @@
+import { assets } from '../../../assets/assets'
+import GLBModel from '../GLBModel';
+
 type ProjectsProps = {
 };
 
@@ -6,11 +9,7 @@ export default function Projects({
 
   return (
     <>
-        {/* Cylinder */}
-        <mesh position={[0,0,-1]}>
-            <cylinderGeometry args={[0.5, 0.5, 1.5, 32]} />
-            <meshToonMaterial color="green" />
-        </mesh>
+        <GLBModel url={assets.models.projects} position={[0, -0.6, -1]} scale={[0.6, 0.6, 0.6]}/>
     </>
   );
 }
