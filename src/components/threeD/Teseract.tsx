@@ -75,7 +75,7 @@ export default function Teseract({
                     room={room}
                     setRoom={setRoom}
                 >
-                    <AboutMe/>
+                    <AboutMe color={"indianred"}/>
                 </Side>
                 <group ref={gear1} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                     <group position={[1, 0, 0]}>
@@ -87,7 +87,7 @@ export default function Teseract({
                             room={room}
                             setRoom={setRoom}
                         >
-                            <Experience/>
+                            <Experience color={"lightblue"}/>
                         </Side>
                         <group ref={gear2} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                             <group position={[1, 0, 0]}>
@@ -99,7 +99,7 @@ export default function Teseract({
                                     room={room}
                                     setRoom={setRoom} 
                                 >
-                                    <Projects/>
+                                    <Projects color={"lightgreen"}/>
                                 </Side>
                             </group>
                         </group>
@@ -113,7 +113,7 @@ export default function Teseract({
                                     room={room}
                                     setRoom={setRoom}
                                 >
-                                    <Contact/>
+                                    <Contact color={"hotpink"}/>
                                 </Side>   
                             </group>
                         </group>
@@ -129,7 +129,7 @@ export default function Teseract({
                             room={room}
                             setRoom={setRoom}
                         >
-                            <Studies/>
+                            <Studies color={"aquamarine"}/>
                         </Side>
                         </group>
                     </group>
@@ -143,7 +143,7 @@ export default function Teseract({
                             room={room} 
                             setRoom={setRoom}
                         >
-                            <CV/>
+                            <CV color={"orange"}/>
                         </Side>
                     </group>
                 </group>
