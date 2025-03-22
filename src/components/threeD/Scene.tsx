@@ -26,7 +26,7 @@ export default function Scene({
                 background: `linear-gradient(to bottom, ${getCssVariableValue("--color-primary")}, ${getCssVariableValue("--color-secondary")})`,
                 height: '100vh',
             }}
-            camera={{ position: [2, 2, 5] }}
+            camera={{ position: [2000, 2000, 2000]}}
         >
             <Tween />
             <ambientLight intensity={0.5} />

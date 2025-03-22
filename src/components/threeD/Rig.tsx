@@ -19,6 +19,11 @@ export default function Rig({
 }: RigProps) {
     const { controls, scene } = useThree();
 
+    async function initialTransition() {
+        await (controls as any)?.setLookAt( 4, 8, 4, 0, 8, -1, false )
+        await (controls as any)?.setLookAt( -4, 3, 4, 0, 0, -1, true )
+    }
+
     useEffect(() => {
         if (room) {
             const active = scene.getObjectByName(room);
@@ -27,7 +32,7 @@ export default function Rig({
                 active.parent?.localToWorld(focus.set(0, 0, -1));
             }
             (controls as any)?.setLookAt(...position.toArray(), ...focus.toArray(), true);
-        } else if (mode === 'InitialBox') (controls as any)?.setLookAt(-4, 4, 4, 0, 0, -1, true);
+        } else if (mode === 'InitialBox') initialTransition()
         else if (mode === 'OpenBox') (controls as any)?.setLookAt(1, 0, 4, 1, 0, -1, true);
         else if (mode === 'Teseract') (controls as any)?.setLookAt(4, 4, 4, 0, 0, -1, true);  
     }, [mode, room, scene, position, focus, controls]);
@@ -50,12 +55,12 @@ export default function Rig({
                 three: 0,
             }}
             makeDefault 
-            minPolarAngle={mode === "OpenBox" && !room ? Math.PI / 2 : 0} // Lock vertical angle in OpenBox
-            maxPolarAngle={mode === "OpenBox" && !room? Math.PI / 2 : Math.PI} 
-            minAzimuthAngle={mode === "OpenBox" && !room? 0 : -Infinity} // Lock vertical angle in OpenBox
-            maxAzimuthAngle={mode === "OpenBox" && !room? 0 : Infinity} 
-            minDistance={mode === "OpenBox" && !room? 1 : 4}
-            maxDistance={mode === "OpenBox" && !room? 5 : 7}
+            minPolarAngle={mode === "OpenBox" && !room ? Math.PI / 2 : 0}
+            maxPolarAngle={mode === "OpenBox" && !room? Math.PI / 2 : Math.PI}
+            minAzimuthAngle={mode === "OpenBox" && !room? 0 : -Infinity}
+            maxAzimuthAngle={mode === "OpenBox" && !room? 0 : Infinity}
+            minDistance={mode === "OpenBox" && !room? 1 : 3}
+            maxDistance={mode === "OpenBox" && !room? 5 : 6}
             smoothTime={1}
         />
     );
