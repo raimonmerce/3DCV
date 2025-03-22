@@ -10,6 +10,7 @@ import InitialBox from "./InitialBox";
 import { ModeType, RoomType } from '@/types/types';
 import * as TWEEN from '@tweenjs/tween.js';
 import { Mesh } from 'three';
+import {assets} from '../../assets/assets'
 
 type TeseractBoxProps = {
     mode: ModeType;
@@ -70,36 +71,39 @@ export default function Teseract({
                 <Side
                     id="AboutMe"
                     title="About Me"
-                    bg="indianred" 
+                    url={assets.models.aboutme}
+                    color="indianred" 
                     mode={mode}
                     room={room}
                     setRoom={setRoom}
                 >
-                    <AboutMe color={"indianred"}/>
+                    <AboutMe/>
                 </Side>
                 <group ref={gear1} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                     <group position={[1, 0, 0]}>
                         <Side 
                             id="Experience"
                             title="Experience"
-                            bg="lightblue" 
+                            url={assets.models.experience}
+                            color="lightblue" 
                             mode={mode}
                             room={room}
                             setRoom={setRoom}
                         >
-                            <Experience color={"lightblue"}/>
+                            <Experience/>
                         </Side>
                         <group ref={gear2} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                             <group position={[1, 0, 0]}>
                                 <Side 
                                     id="Projects"
                                     title="Projects"
-                                    bg="lightgreen" 
+                                    url={assets.models.projects}
+                                    color="lightgreen" 
                                     mode={mode}
                                     room={room}
                                     setRoom={setRoom} 
                                 >
-                                    <Projects color={"lightgreen"}/>
+                                    <Projects/>
                                 </Side>
                             </group>
                         </group>
@@ -108,12 +112,13 @@ export default function Teseract({
                                 <Side 
                                     id="Contact"
                                     title="Contact"
-                                    bg="hotpink" 
+                                    url={assets.models.contact}
+                                    color="hotpink" 
                                     mode={mode}
                                     room={room}
                                     setRoom={setRoom}
                                 >
-                                    <Contact color={"hotpink"}/>
+                                    <Contact/>
                                 </Side>   
                             </group>
                         </group>
@@ -124,12 +129,13 @@ export default function Teseract({
                         <Side 
                             id="Studies"
                             title="Studies"
-                            bg="aquamarine" 
+                            url={assets.models.studies}
+                            color="aquamarine" 
                             mode={mode}
                             room={room}
                             setRoom={setRoom}
                         >
-                            <Studies color={"aquamarine"}/>
+                            <Studies/>
                         </Side>
                         </group>
                     </group>
@@ -138,12 +144,13 @@ export default function Teseract({
                         <Side 
                             id="CV"
                             title="CV"
-                            bg="orange"
+                            url={assets.models.cv}
+                            color="orange"
                             mode={mode}
                             room={room} 
                             setRoom={setRoom}
                         >
-                            <CV color={"orange"}/>
+                            <CV/>
                         </Side>
                     </group>
                 </group>

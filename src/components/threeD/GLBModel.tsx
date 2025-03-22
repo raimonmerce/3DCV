@@ -1,7 +1,6 @@
 import * as THREE from 'three';
 import { useEffect, useMemo } from 'react';
 import { useGLTF, Clone } from '@react-three/drei';
-import { assets } from '../../assets/assets'
 
 type GLBModelProps = {
   url: string;
@@ -18,9 +17,10 @@ export default function GLBModel({
   scale = [1, 1, 1],
   color
 }: GLBModelProps) {
+  if (!url) return;
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => scene ? scene.clone() : null, [scene]);
-
+  console.log(clonedScene)
   useEffect(() => {
     if (clonedScene) {
       clonedScene.traverse((child) => {
