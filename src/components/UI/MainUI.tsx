@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import NavigationPanel from './NavigationPanel';
 import ButtonIcon from './ButtonIcon';
 import { ModeType, RoomType } from '@/types/types';
+import { assets } from '../../assets/assets'
 
 type MainUIProps = {
   mode: ModeType;
@@ -40,13 +41,13 @@ const MainUI = ({ mode, setMode, room, setRoom }: MainUIProps) => {
         room && showBack? (
           <ButtonIcon
             position="left"
-            svgPath={'/back.svg'}
+            svgPath={assets.svg.back}
             onClick={() => setRoom(null)}
           />
         ) : (
           <ButtonIcon
             position="right"
-            svgPath={mode === 'Teseract' ? '/logo.svg' : '/cube.svg'}
+            svgPath={mode === 'Teseract' ? assets.svg.logo : assets.svg.cube}
             onClick={() => setMode(mode === 'Teseract' ? 'OpenBox' : 'Teseract')}
           />
         )
