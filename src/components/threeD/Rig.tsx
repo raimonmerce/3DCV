@@ -13,6 +13,15 @@ interface RigProps {
     inTransition: boolean;
 }
 
+type PosTarget = {
+    x: number;
+    y: number;
+    z: number;
+    tx: number;
+    ty: number;
+    tz: number;
+};
+
 export default function Rig({ 
     position = new THREE.Vector3(0, 0, 2), 
     focus = new THREE.Vector3(0, 0, 0),
@@ -22,63 +31,107 @@ export default function Rig({
 }: RigProps) {
     const { controls, scene } = useThree();
     const [transition, setTransition] = useState(false);
-    const lerpSpeed: number = 0.02;
+    const [initialCameraPoint, setInitialCameraPoint] = useState({x:0, y:0, z:0});
+    const lerpSpeed: number = 0.0005;
 
-    function lerp(current: number, target: number, alpha: number): number {
-        return current + (target - current) * alpha;
+    function lerp(
+        current: number, 
+        target: number, 
+        alpha: number, 
+        min: number, 
+        max: number
+    ): number {
+        const result = current + (target - current) * alpha;
+        return Math.max(min, Math.min(max, result));
     }
 
-    function getRoomAxis(
+    function getRoomPosTarget(
         room: RoomType, 
         mode: ModeType, 
         cameraPos: any, 
         fixedTargetX: number, 
         fixedTargetY: number
     ) {
+        let x, y, z;
         if (mode === "OpenBox") {
+            x = lerp(cameraPos.x, fixedTargetX, lerpSpeed, initialCameraPoint.x - 1, initialCameraPoint.x + 1)
+            y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1, initialCameraPoint.y + 1)
             return {
-                x: lerp(cameraPos.x, fixedTargetX, lerpSpeed),
-                y: lerp(cameraPos.y, fixedTargetY, lerpSpeed),
-                z: cameraPos.z
+                x: x,
+                y: y,
+                z: cameraPos.z,
+                tx: x,
+                ty: y,
+                tz: cameraPos.z - 0.1
             };
         }
     
         switch (room) {
             case "AboutMe":
+                x = lerp(cameraPos.x, fixedTargetX, lerpSpeed, initialCameraPoint.x - 1, initialCameraPoint.x + 1)
+                y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1, initialCameraPoint.y + 1)
                 return {
-                    x: lerp(cameraPos.x, fixedTargetX, lerpSpeed),
-                    y: lerp(cameraPos.y, fixedTargetY, lerpSpeed),
-                    z: cameraPos.z
+                    x: x,
+                    y: y,
+                    z: cameraPos.z,
+                    tx: x,
+                    ty: y,
+                    tz: cameraPos.z - 0.1
                 };
             case "Contact":
+                x = lerp(cameraPos.x, fixedTargetY, lerpSpeed, initialCameraPoint.x - 1,initialCameraPoint.x + 1)
+                z = lerp(cameraPos.z, -fixedTargetX, lerpSpeed, initialCameraPoint.z - 1, initialCameraPoint.z + 1)
                 return {
-                    x: lerp(cameraPos.x, fixedTargetY, lerpSpeed),
+                    x: x,
                     y: cameraPos.y,
-                    z: lerp(cameraPos.z, -fixedTargetX, lerpSpeed)
+                    z: z,
+                    tx: x,
+                    ty: cameraPos.y + 0.1,
+                    tz: z
                 };
             case "CV":
+                x = lerp(cameraPos.x, fixedTargetX, lerpSpeed, initialCameraPoint.x - 1,initialCameraPoint.x + 1)
+                z = lerp(cameraPos.z, -fixedTargetY, lerpSpeed, initialCameraPoint.z - 1, initialCameraPoint.z + 1)
                 return {
-                    x: lerp(cameraPos.x, fixedTargetX, lerpSpeed),
+                    x: x,
                     y: cameraPos.y,
-                    z: lerp(cameraPos.z, -fixedTargetY, lerpSpeed)
+                    z: z,
+                    tx: x,
+                    ty: cameraPos.y - 0.1,
+                    tz: z
                 };
             case "Experience":
+                y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1, initialCameraPoint.y + 1)
+                z = lerp(cameraPos.z, -fixedTargetX, lerpSpeed, initialCameraPoint.z - 1, initialCameraPoint.z + 1)
                 return {
                     x: cameraPos.x,
-                    y: lerp(cameraPos.y, fixedTargetY, lerpSpeed),
-                    z: lerp(cameraPos.z, -fixedTargetX, lerpSpeed),
+                    y: y,
+                    z: z,
+                    tx: cameraPos.x - 0.1,
+                    ty: y,
+                    tz: z
                 };
             case "Projects":
+                x = lerp(cameraPos.x, -fixedTargetX, lerpSpeed, initialCameraPoint.x - 1,initialCameraPoint.x + 1)
+                y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1, initialCameraPoint.y + 1)
                 return {
-                    x: lerp(cameraPos.x, -fixedTargetX, lerpSpeed),
-                    y: lerp(cameraPos.y, fixedTargetY, lerpSpeed),
-                    z: cameraPos.z
+                    x: x,
+                    y: y,
+                    z: cameraPos.z,
+                    tx: x,
+                    ty: y,
+                    tz: cameraPos.z + 0.1
                 };
             default:
+                y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1,initialCameraPoint.y + 1)
+                z = lerp(cameraPos.z, fixedTargetX, lerpSpeed, initialCameraPoint.z - 1, initialCameraPoint.z + 1)
                 return {
                     x: cameraPos.x,
-                    y: lerp(cameraPos.y, fixedTargetY, lerpSpeed),
-                    z: lerp(cameraPos.z, fixedTargetX, lerpSpeed),
+                    y: y,
+                    z: z,
+                    tx: cameraPos.x + 0.1,
+                    ty: y,
+                    tz: z
                 };
         }
     }
@@ -92,11 +145,20 @@ export default function Rig({
         const fixedTargetX: number = parseFloat(targetX.toFixed(2)); 
         const fixedTargetY: number = parseFloat(targetY.toFixed(2));
 
-        const axis = getRoomAxis(room, mode, state.camera.position, fixedTargetX, fixedTargetY)
+        const posTarget: PosTarget = getRoomPosTarget(room, mode, state.camera.position, fixedTargetX, fixedTargetY);
 
-        state.camera.position.x = axis.x
-        state.camera.position.y = axis.y
-        state.camera.position.z = axis.z
+        if (controls && (controls as any).setPosition) {
+            (controls as any).setTarget(posTarget.tx * 1.03, posTarget.ty * 1.03, posTarget.tz * 1.03, false);
+            (controls as any).setPosition(posTarget.x, posTarget.y, posTarget.z, false);
+        } else {
+            console.error("Controls not available or setPosition method is missing.");
+        }
+
+        // const axis = getRoomAxis(room, mode, state.camera.position, fixedTargetX, fixedTargetY)
+
+        // state.camera.position.x = axis.x
+        // state.camera.position.y = axis.y
+        // state.camera.position.z = axis.z
     });
 
     function getCameraConfig(mode: ModeType, room: RoomType | null) {
@@ -178,6 +240,7 @@ export default function Rig({
 
     async function openTransition() {
         await (controls as any)?.setLookAt(1, 0, 4, 1, 0, -1, true);
+        setInitialCameraPoint({x: 1, y: 0, z: 0})
     }
 
     async function teseractTransition() {
@@ -192,6 +255,7 @@ export default function Rig({
             active.parent?.localToWorld(focus.set(0, 0, -1));
         }
         await (controls as any)?.setLookAt(...position.toArray(), ...focus.toArray(), true);
+        setInitialCameraPoint({x: position.x, y: position.y, z: position.z})
         setTransition(false)
     }
 
