@@ -20,7 +20,6 @@ export default function GLBModel({
   if (!url) return;
   const { scene } = useGLTF(url);
   const clonedScene = useMemo(() => scene ? scene.clone() : null, [scene]);
-  console.log(clonedScene)
   useEffect(() => {
     if (clonedScene) {
       clonedScene.traverse((child) => {

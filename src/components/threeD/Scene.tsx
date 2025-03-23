@@ -33,7 +33,6 @@ export default function Scene({
             <pointLight intensity={10} position={[3, 3, 3]} />
             <pointLight intensity={10} position={[-3, -3, -3]} />
             <Teseract mode={mode} setMode={setMode} room={room} setRoom={setRoom}/>
-            {/* <CircularText rotation={[-Math.PI/2, 0, 0]}/> */}
             <Rig mode={mode} room={room}/>
             {/* <Stats/> */}
         </Canvas>

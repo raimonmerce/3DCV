@@ -19,9 +19,81 @@ export default function Rig({
 }: RigProps) {
     const { controls, scene } = useThree();
 
+    function getCameraConfig(mode: ModeType, room: RoomType | null) {
+        if (room) {
+            return {
+                mouseButtons: {
+                    left: 1,
+                    middle: 16,
+                    right: 0,
+                    wheel: 16,
+                },
+                touches: { one: 64, two: 2048, three: 0 },
+                minPolarAngle: 0,
+                maxPolarAngle: Math.PI,
+                minAzimuthAngle: -Infinity,
+                maxAzimuthAngle: Infinity,
+                minDistance: 3,
+                maxDistance: 6,
+            };
+        }
+    
+        switch (mode) {
+            case "OpenBox":
+                return {
+                    mouseButtons: {
+                        left: 2,
+                        middle: 16,
+                        right: 0,
+                        wheel: 16,
+                    },
+                    touches: { one: 128, two: 2048, three: 0 },
+                    minPolarAngle: Math.PI / 2,
+                    maxPolarAngle: Math.PI / 2,
+                    minAzimuthAngle: 0,
+                    maxAzimuthAngle: 0,
+                    minDistance: 1,
+                    maxDistance: 5,
+                };
+            case "Teseract":
+                return {
+                    mouseButtons: {
+                        left: 1,
+                        middle: 16,
+                        right: 0,
+                        wheel: 16,
+                    },
+                    touches: { one: 64, two: 2048, three: 0 },
+                    minPolarAngle: 0,
+                    maxPolarAngle: Math.PI,
+                    minAzimuthAngle: -Infinity,
+                    maxAzimuthAngle: Infinity,
+                    minDistance: 3,
+                    maxDistance: 6,
+                };
+            case "InitialBox":
+            default:
+                return {
+                mouseButtons: {
+                    left: 1,
+                    middle: 16,
+                    right: 0,
+                    wheel: 16,
+                },
+                touches: { one: 64, two: 2048, three: 0 },
+                    minPolarAngle: 0,
+                    maxPolarAngle: Math.PI,
+                    minAzimuthAngle: -Infinity,
+                    maxAzimuthAngle: Infinity,
+                    minDistance: 3,
+                    maxDistance: 6,
+                };
+        }
+    }
+
     async function initialTransition() {
-        await (controls as any)?.setLookAt( 4, 8, 4, 0, 8, -1, false )
-        await (controls as any)?.setLookAt( -4, 3, 4, 0, 0, -1, true )
+        await (controls as any)?.setLookAt( 3, 8, 3, 0, 8, -1, false )
+        await (controls as any)?.setLookAt( -3, 3, 3, 0, 0, -1, true )
     }
 
     useEffect(() => {
@@ -32,35 +104,36 @@ export default function Rig({
                 active.parent?.localToWorld(focus.set(0, 0, -1));
             }
             (controls as any)?.setLookAt(...position.toArray(), ...focus.toArray(), true);
-        } else if (mode === 'InitialBox') initialTransition()
-        else if (mode === 'OpenBox') (controls as any)?.setLookAt(1, 0, 4, 1, 0, -1, true);
-        else if (mode === 'Teseract') (controls as any)?.setLookAt(4, 4, 4, 0, 0, -1, true);  
+        } else {
+            switch (mode) {
+                case "InitialBox":
+                    initialTransition();
+                    break;
+                case "OpenBox":
+                    (controls as any)?.setLookAt(1, 0, 4, 1, 0, -1, true);
+                    break;
+                case "Teseract":
+                    (controls as any)?.setLookAt(3, 3, 3, 0, 0, -1, true);
+                    break;
+                default:
+                    break;
+            }
+        }  
     }, [mode, room, scene, position, focus, controls]);
+
+    const cameraConfig = getCameraConfig(mode, room);
 
     return (
         <CameraControls 
-            mouseButtons={{
-                left: mode === "OpenBox" && !room
-                    ? 2
-                    : 1,
-                middle: 16,
-                right: 0,
-                wheel: 16,
-            }}
-            touches={{
-                one: mode === "OpenBox" && !room
-                    ? 128
-                    : 64,
-                two: 2048,
-                three: 0,
-            }}
+            mouseButtons={cameraConfig.mouseButtons as any}
+            touches={cameraConfig.touches  as any}
             makeDefault 
-            minPolarAngle={mode === "OpenBox" && !room ? Math.PI / 2 : 0}
-            maxPolarAngle={mode === "OpenBox" && !room? Math.PI / 2 : Math.PI}
-            minAzimuthAngle={mode === "OpenBox" && !room? 0 : -Infinity}
-            maxAzimuthAngle={mode === "OpenBox" && !room? 0 : Infinity}
-            minDistance={mode === "OpenBox" && !room? 1 : 3}
-            maxDistance={mode === "OpenBox" && !room? 5 : 6}
+            minPolarAngle={cameraConfig.minPolarAngle}
+            maxPolarAngle={cameraConfig.maxPolarAngle}
+            minAzimuthAngle={cameraConfig.minAzimuthAngle}
+            maxAzimuthAngle={cameraConfig.maxAzimuthAngle}
+            minDistance={cameraConfig.minDistance}
+            maxDistance={cameraConfig.maxDistance}
             smoothTime={1}
         />
     );

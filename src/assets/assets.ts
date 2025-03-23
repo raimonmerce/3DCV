@@ -7,6 +7,8 @@ import studies from './models/studies.glb';
 import back from './svg/back.svg';
 import cube from './svg/cube.svg';
 import logo from './svg/logo.svg';
+import menu from './svg/menu.svg';
+import download from './svg/download.svg';
 
 export const assets = {
     models: {
@@ -20,7 +22,9 @@ export const assets = {
     svg: {
         back: back,
         cube: cube,
-        logo: logo
+        logo: logo,
+        menu: menu,
+        download: download
     },
 };
 
