@@ -9,9 +9,11 @@ type MainUIProps = {
   setMode: React.Dispatch<React.SetStateAction<ModeType>>;
   room: RoomType | null;
   setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
+  inTransition: boolean;
+  setInTransition: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const MainUI = ({ mode, setMode, room, setRoom }: MainUIProps) => {
+const MainUI = ({ mode, setMode, room, setRoom, inTransition, setInTransition }: MainUIProps) => {
   const [showBack, setShowBack] = useState(false);
 
   useEffect(() => {
