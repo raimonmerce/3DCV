@@ -17,13 +17,15 @@ type TeseractBoxProps = {
     setMode: React.Dispatch<React.SetStateAction<ModeType>>;
     room: RoomType | null;
     setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
+    setPanel: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export default function Teseract({ 
     mode,
     setMode,
     room,
-    setRoom
+    setRoom,
+    setPanel
 }: TeseractBoxProps) {
     const [animationFinished, setAnimationFinished] = useState(true);
     const gear1 = useRef<Mesh>(null);
@@ -77,7 +79,7 @@ export default function Teseract({
                     room={room}
                     setRoom={setRoom}
                 >
-                    <AboutMe/>
+                    <AboutMe setPanel={setPanel}/>
                 </Side>
                 <group ref={gear1} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                     <group position={[1, 0, 0]}>
@@ -90,7 +92,7 @@ export default function Teseract({
                             room={room}
                             setRoom={setRoom}
                         >
-                            <Experience/>
+                            <Experience setPanel={setPanel}/>
                         </Side>
                         <group ref={gear2} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                             <group position={[1, 0, 0]}>
@@ -103,7 +105,7 @@ export default function Teseract({
                                     room={room}
                                     setRoom={setRoom} 
                                 >
-                                    <Projects/>
+                                    <Projects setPanel={setPanel}/>
                                 </Side>
                             </group>
                         </group>
@@ -118,7 +120,7 @@ export default function Teseract({
                                     room={room}
                                     setRoom={setRoom}
                                 >
-                                    <Contact/>
+                                    <Contact setPanel={setPanel}/>
                                 </Side>   
                             </group>
                         </group>
@@ -135,7 +137,7 @@ export default function Teseract({
                             room={room}
                             setRoom={setRoom}
                         >
-                            <Studies/>
+                            <Studies setPanel={setPanel}/>
                         </Side>
                         </group>
                     </group>
@@ -150,7 +152,7 @@ export default function Teseract({
                             room={room} 
                             setRoom={setRoom}
                         >
-                            <CV/>
+                            <CV setPanel={setPanel}/>
                         </Side>
                     </group>
                 </group>

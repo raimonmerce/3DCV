@@ -1,49 +1,30 @@
-import { useState } from 'react';
+import Icon from './Icon';
 
 type ButtonIconProps = {
-  position: 'left' | 'right';
   onClick: () => void;
   svgPath?: string;
+  style?: React.CSSProperties;
 };
 
-const ButtonIcon = ({ position, onClick, svgPath}: ButtonIconProps) => {
-  const [hovered, setHovered] = useState(false);
-
+const ButtonIcon = ({ svgPath, onClick, style }: ButtonIconProps) => {
   return (
-    <a
+    <button
       style={{
-        position: 'absolute',
-        top: '40px',
-        [position]: 40,
         fontSize: '20px',
         pointerEvents: 'auto',
         cursor: 'pointer',
         textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
-        color: hovered ? 'gray' : 'white',
         transition: 'color 0.2s ease',
         display: 'flex',
         alignItems: 'center',
+        background: 'transparent',
+        border: 0,
+        ...style,
       }}
       onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
-      {svgPath && (
-        <img
-            src={svgPath}
-            alt="icon"
-            style={{
-            width: '40px',
-            height: '40px',
-            marginRight: '8px',
-            filter: hovered
-                ? 'brightness(0) saturate(100%) invert(60%)'
-                : 'brightness(0) saturate(100%) invert(100%)',
-            transition: 'filter 0.2s ease',
-            }}
-        />
-      )}
-    </a>
+      <Icon svgPath={svgPath}/>
+    </button>
   );
 };
 

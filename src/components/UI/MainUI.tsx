@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import NavigationPanel from './NavigationPanel';
 import ButtonIcon from './ButtonIcon';
+import PanelInfo from './PanelInfo';
 import { ModeType, RoomType } from '@/types/types';
 import { assets } from '../../assets/assets'
 
@@ -9,9 +10,11 @@ type MainUIProps = {
   setMode: React.Dispatch<React.SetStateAction<ModeType>>;
   room: RoomType | null;
   setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
+  panel: string | null;
+  setPanel: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-const MainUI = ({ mode, setMode, room, setRoom }: MainUIProps) => {
+const MainUI = ({ mode, setMode, room, setRoom, panel, setPanel }: MainUIProps) => {
   const [showBack, setShowBack] = useState(false);
 
   useEffect(() => {
@@ -40,18 +43,30 @@ const MainUI = ({ mode, setMode, room, setRoom }: MainUIProps) => {
       {mode !== 'InitialBox' && (
         room && showBack? (
           <ButtonIcon
-            position="left"
+            style={{
+              position: 'absolute',
+              top: '40px',
+              left: 40,
+            }}
             svgPath={assets.svg.back}
             onClick={() => setRoom(null)}
           />
         ) : (
           <ButtonIcon
-            position="right"
+            style={{
+              position: 'absolute',
+              top: '40px',
+              right: 40,
+            }}
             svgPath={mode === 'Teseract' ? assets.svg.logo : assets.svg.cube}
             onClick={() => setMode(mode === 'Teseract' ? 'OpenBox' : 'Teseract')}
           />
         )
       )}
+
+      {panel &&
+        <PanelInfo panel={panel} setPanel={setPanel}/>
+      }
 
       <NavigationPanel mode={mode} setMode={setMode} room={room} setRoom={setRoom} />
     </div>

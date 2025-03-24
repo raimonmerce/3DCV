@@ -6,18 +6,21 @@ import { useLoader } from "@react-three/fiber";
 import * as TWEEN from '@tweenjs/tween.js';
 
 type RoomObjectProps = {
+    name: string;
     urlImage: string;
     position?: [number, number, number];
     scale?: [number, number, number];
     color: string;
+    setPanel: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export default function RoomObject({
+    name,
     urlImage,
     position = [0, 0, 0],
     scale = [1, 1, 1],
-    color
-
+    color,
+    setPanel
 }: RoomObjectProps) {
     const [hovered, setHovered] = useState(false);
     const [outlineOpacity, setOutlineOpacity] = useState(0);
@@ -56,7 +59,7 @@ export default function RoomObject({
 
     const handlePointerOver = () => setHovered(true);
     const handlePointerOut = () => setHovered(false);
-    const handleClick = () => console.log("Clicked")
+    const handleClick = () => setPanel(name)
 
     return (
         <group

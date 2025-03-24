@@ -11,6 +11,7 @@ type SceneProps = {
     setMode: React.Dispatch<React.SetStateAction<ModeType>>;
     room: RoomType | null;
     setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
+    setPanel: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export default function Scene({ 
@@ -18,6 +19,7 @@ export default function Scene({
     setMode,
     room,
     setRoom,
+    setPanel
   }: SceneProps) {
    
     return (
@@ -32,7 +34,7 @@ export default function Scene({
             <ambientLight intensity={0.5} />
             <pointLight intensity={10} position={[3, 3, 3]} />
             <pointLight intensity={10} position={[-3, -3, -3]} />
-            <Teseract mode={mode} setMode={setMode} room={room} setRoom={setRoom}/>
+            <Teseract mode={mode} setMode={setMode} room={room} setRoom={setRoom} setPanel={setPanel}/>
             <Rig mode={mode} room={room}/>
             <Stats/>
         </Canvas>
