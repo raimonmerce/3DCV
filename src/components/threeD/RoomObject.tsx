@@ -1,90 +1,95 @@
-import { useGLTF, Clone } from '@react-three/drei';
-import { useMemo, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { navigateTo } from '../../utils/utils';
-import BillboardHTML from './BillboardHtml';
+import { Outlines, RoundedBox } from '@react-three/drei';
+import { useLoader } from "@react-three/fiber";
+import * as TWEEN from '@tweenjs/tween.js';
 
 type RoomObjectProps = {
-    url: string;
-    name?: string;
+    urlImage: string;
     position?: [number, number, number];
-    rotation?: [number, number, number];
     scale?: [number, number, number];
-    urlLink: string;
-    nameLink: string;
-    offsetPoint?: [number, number, number];
+    color: string;
 };
 
 export default function RoomObject({
-    url,
-    name,
+    urlImage,
     position = [0, 0, 0],
-    rotation = [0, 0, 0],
     scale = [1, 1, 1],
-    urlLink,
-    nameLink,
-    offsetPoint = [0, 0, -1]
+    color
+
 }: RoomObjectProps) {
-    const { scene } = useGLTF(url, '/draco-gltf');
-    const [center, setCenter] = useState<null | THREE.Vector3>(null);
-    const [isHovered, setIsHovered] = useState(false);
-    const [isTextHovered, setIsTextHovered] = useState(false);
-    const [opacity, setOpacity] = useState(0);
-    const popupFadeSpeed = 4.0;
-    const clonedScene = useMemo(() => scene.clone(), [scene]);
+    const [hovered, setHovered] = useState(false);
+    const [outlineOpacity, setOutlineOpacity] = useState(0);
+    const texture = useLoader(THREE.TextureLoader, urlImage);
+    const groupRef = useRef<THREE.Group>(null);
+    const size = 2;
+    const radius = 0.15;
 
-    useEffect(() => {
-        if (clonedScene && !center) {
-            const bbox = new THREE.Box3().setFromObject(clonedScene);
-            const tempCenter = new THREE.Vector3();
-            bbox.getCenter(tempCenter);
-            setCenter(tempCenter);
-        }
-    }, [clonedScene, center]);
-
-    useFrame((_state, delta) => {
-        if (isHovered || isTextHovered) {
-            setOpacity((prev) => Math.min(prev + delta * popupFadeSpeed, 1));
-        } else {
-            setOpacity((prev) => Math.max(prev - delta * popupFadeSpeed, 0));
+    useFrame(({ camera }) => {
+        if (groupRef.current) {
+            groupRef.current.up.copy(camera.up);
+            groupRef.current.lookAt(camera.position);
         }
     });
 
-    const handlePointerOver = () => setIsHovered(true);
-    const handlePointerOut = () => setIsHovered(false);
-    const handleTextOver = () => setIsTextHovered(true);
-    const handleTextOut = () => setIsTextHovered(false);
-    const handleClick = () => navigateTo(urlLink);
+    useEffect(() => {
+        if (!hovered) {
+            setOutlineOpacity(0);
+            return;
+        }
+
+        const tween = new TWEEN.Tween({ value: 0 })
+            .to({ value: 1 }, 750)
+            .easing(TWEEN.Easing.Quadratic.InOut)
+            .onUpdate((obj) => {
+                setOutlineOpacity(obj.value);
+            })
+            .repeat(Infinity)
+            .yoyo(true)
+            .start();
+
+        return () => {
+            tween.stop();
+        };
+    }, [hovered]);
+
+    const handlePointerOver = () => setHovered(true);
+    const handlePointerOut = () => setHovered(false);
+    const handleClick = () => console.log("Clicked")
 
     return (
         <group
-            name={name}
+            ref={groupRef} 
             position={position}
-            rotation={rotation}
             scale={scale}
         >
-            <Clone
-                object={clonedScene}
+            <RoundedBox
+                args={[size, size, size/2]}
+                radius={radius}
+                smoothness={4}
+                bevelSegments={4}
+                creaseAngle={0.4}
                 onPointerOver={handlePointerOver}
                 onPointerOut={handlePointerOut}
                 onClick={handleClick}
-                castShadow 
-                receiveShadow 
-            />
+            >
+                <meshPhongMaterial color={color} />
+                    {hovered && 
+                        <Outlines 
+                            thickness={10} 
+                            transparent 
+                            opacity={outlineOpacity} 
+                            color="white" 
+                        />
+                    }
+            </RoundedBox>
 
-            {center && (
-                <BillboardHTML
-                    center={center}
-                    offsetPoint={offsetPoint}
-                    opacity={opacity}
-                    isHovered={isHovered}
-                    nameLink={nameLink}
-                    handleClick={handleClick}
-                    handleTextOver={handleTextOver}
-                    handleTextOut={handleTextOut}
-                />
-            )}
+            <mesh position={[0, 0, 0.51]}>
+                <planeGeometry args={[size - (radius * 2), size - (radius * 2)]} />
+                <meshBasicMaterial map={texture} transparent />
+            </mesh>
         </group>
+
     );
 }

@@ -12,12 +12,11 @@ export default function AboutMe({
   return (
     <>
       <RoomObject
-        url={assets.models.studies}
+        urlImage={assets.images.unionavatars}
         key="scene"
-        urlLink={'https://x.com/chemaalonso'}
-        nameLink={'X'}
-        position={[-2, -0.5, -1]}
-        scale={[0.5, 0.5, 0.5]}
+        color={'blue'}
+        position={[-0.5, -1.5, -1]}
+        scale={[1, 1, 1]}
       />,
     </>
   );
