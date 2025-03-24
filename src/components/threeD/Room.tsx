@@ -55,19 +55,22 @@ export default function Room({
                 <boxGeometry args={[2, 2, 2]} />
                 <meshPhongMaterial ref={roomMaterial} color={color} side={1} transparent opacity={1}/>
             </mesh> 
-            {selected &&
-                <mesh position={[0, 0, -1]}>
-                    <sphereGeometry args={[10, 32, 16]} />
-                    <meshPhongMaterial color={color} side={2}/>
-                </mesh> 
-            }
             <GLBModel 
                 url={url} 
                 position={[0, -0.6, -1]} 
                 scale={[0.6, 0.6, 0.6]}
                 color={color}
             />
-            {children}
+            {selected &&
+                <>
+                    <mesh position={[0, 0, -1]}>
+                        <sphereGeometry args={[10, 32, 16]} />
+                        <meshPhongMaterial color={color} side={2}/>
+                    </mesh> 
+                    {children}
+                </>
+            }
+            
         </> 
     );
 }

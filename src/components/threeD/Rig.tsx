@@ -3,14 +3,12 @@ import { useEffect, useState } from 'react';
 import { useThree, useFrame } from "@react-three/fiber";
 import { CameraControls  } from "@react-three/drei";
 import { ModeType, RoomType } from '@/types/types';
-import { easing } from 'maath'
 
 interface RigProps {
     position?: THREE.Vector3;
     focus?: THREE.Vector3;
     mode: ModeType;
     room: RoomType | null;
-    inTransition: boolean;
 }
 
 type PosTarget = {
@@ -26,117 +24,170 @@ export default function Rig({
     position = new THREE.Vector3(0, 0, 2), 
     focus = new THREE.Vector3(0, 0, 0),
     mode,
-    room,
-    inTransition
+    room
 }: RigProps) {
     const { controls, scene } = useThree();
     const [transition, setTransition] = useState(false);
     const [initialCameraPoint, setInitialCameraPoint] = useState({x:0, y:0, z:0});
     const lerpSpeed: number = 0.0005;
 
-    function lerp(
-        current: number, 
-        target: number, 
+    function lerpWithCircleConstraint(
+        currentX: number, 
+        currentY: number, 
+        targetX: number, 
+        targetY: number, 
         alpha: number, 
-        min: number, 
-        max: number
-    ): number {
-        const result = current + (target - current) * alpha;
-        return Math.max(min, Math.min(max, result));
+        centerX: number, 
+        centerY: number, 
+        radius: number
+    ): { a: number, b: number } {
+        let newX = currentX + (targetX - currentX) * alpha;
+        let newY = currentY + (targetY - currentY) * alpha;
+    
+        const dx = newX - centerX;
+        const dy = newY - centerY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+    
+        if (dist > radius) {
+            newX = centerX + (dx / dist) * radius;
+            newY = centerY + (dy / dist) * radius;
+        }
+    
+        return { a: newX, b: newY };
     }
 
     function getRoomPosTarget(
         room: RoomType, 
         mode: ModeType, 
-        cameraPos: any, 
+        cameraPos: {x: number, y: number, z: number}, 
         fixedTargetX: number, 
         fixedTargetY: number
     ) {
-        let x, y, z;
         if (mode === "OpenBox") {
-            x = lerp(cameraPos.x, fixedTargetX, lerpSpeed, initialCameraPoint.x - 1, initialCameraPoint.x + 1)
-            y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1, initialCameraPoint.y + 1)
+            const { a, b } = lerpWithCircleConstraint(
+                cameraPos.x, cameraPos.y, 
+                fixedTargetX, fixedTargetY, 
+                lerpSpeed, 
+                initialCameraPoint.x, initialCameraPoint.y, 
+                1
+            )
             return {
-                x: x,
-                y: y,
+                x: a,
+                y: b,
                 z: cameraPos.z,
-                tx: x,
-                ty: y,
+                tx: a,
+                ty: b,
                 tz: cameraPos.z - 0.1
             };
         }
     
         switch (room) {
-            case "AboutMe":
-                x = lerp(cameraPos.x, fixedTargetX, lerpSpeed, initialCameraPoint.x - 1, initialCameraPoint.x + 1)
-                y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1, initialCameraPoint.y + 1)
+            case "AboutMe": {
+                const { a, b } = lerpWithCircleConstraint(
+                    cameraPos.x, cameraPos.y, 
+                    fixedTargetX, fixedTargetY, 
+                    lerpSpeed, 
+                    initialCameraPoint.x, initialCameraPoint.y, 
+                    1
+                )
                 return {
-                    x: x,
-                    y: y,
+                    x: a,
+                    y: b,
                     z: cameraPos.z,
-                    tx: x,
-                    ty: y,
+                    tx: a,
+                    ty: b,
                     tz: cameraPos.z - 0.1
                 };
-            case "Contact":
-                x = lerp(cameraPos.x, fixedTargetY, lerpSpeed, initialCameraPoint.x - 1,initialCameraPoint.x + 1)
-                z = lerp(cameraPos.z, -fixedTargetX, lerpSpeed, initialCameraPoint.z - 1, initialCameraPoint.z + 1)
+            }
+            case "Contact": {
+                const { a, b } = lerpWithCircleConstraint(
+                    cameraPos.x, cameraPos.z, 
+                    fixedTargetY, -fixedTargetX, 
+                    lerpSpeed, 
+                    initialCameraPoint.x, initialCameraPoint.z, 
+                    1
+                )
                 return {
-                    x: x,
+                    x: a,
                     y: cameraPos.y,
-                    z: z,
-                    tx: x,
+                    z: b,
+                    tx: a,
                     ty: cameraPos.y + 0.1,
-                    tz: z
+                    tz: b
                 };
-            case "CV":
-                x = lerp(cameraPos.x, fixedTargetX, lerpSpeed, initialCameraPoint.x - 1,initialCameraPoint.x + 1)
-                z = lerp(cameraPos.z, -fixedTargetY, lerpSpeed, initialCameraPoint.z - 1, initialCameraPoint.z + 1)
+            }
+            case "CV": {
+                const { a, b } = lerpWithCircleConstraint(
+                    cameraPos.x, cameraPos.z, 
+                    fixedTargetX, -fixedTargetY, 
+                    lerpSpeed, 
+                    initialCameraPoint.x, initialCameraPoint.z, 
+                    1
+                )
                 return {
-                    x: x,
+                    x: a,
                     y: cameraPos.y,
-                    z: z,
-                    tx: x,
+                    z: b,
+                    tx: a,
                     ty: cameraPos.y - 0.1,
-                    tz: z
-                };
-            case "Experience":
-                y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1, initialCameraPoint.y + 1)
-                z = lerp(cameraPos.z, -fixedTargetX, lerpSpeed, initialCameraPoint.z - 1, initialCameraPoint.z + 1)
+                    tz: b
+                }
+            };
+            case "Experience": {
+                const { a, b } = lerpWithCircleConstraint(
+                    cameraPos.y, cameraPos.z, 
+                    fixedTargetY, -fixedTargetX, 
+                    lerpSpeed, 
+                    initialCameraPoint.y, initialCameraPoint.z, 
+                    1
+                )
                 return {
                     x: cameraPos.x,
-                    y: y,
-                    z: z,
+                    y: a,
+                    z: b,
                     tx: cameraPos.x - 0.1,
-                    ty: y,
-                    tz: z
+                    ty: a,
+                    tz: b
                 };
-            case "Projects":
-                x = lerp(cameraPos.x, -fixedTargetX, lerpSpeed, initialCameraPoint.x - 1,initialCameraPoint.x + 1)
-                y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1, initialCameraPoint.y + 1)
+            }
+            case "Projects": {
+                const { a, b } = lerpWithCircleConstraint(
+                    cameraPos.x, cameraPos.y, 
+                    -fixedTargetX, fixedTargetY, 
+                    lerpSpeed, 
+                    initialCameraPoint.x, initialCameraPoint.y, 
+                    1
+                )
                 return {
-                    x: x,
-                    y: y,
+                    x: a,
+                    y: b,
                     z: cameraPos.z,
-                    tx: x,
-                    ty: y,
+                    tx: a,
+                    ty: b,
                     tz: cameraPos.z + 0.1
                 };
-            default:
-                y = lerp(cameraPos.y, fixedTargetY, lerpSpeed, initialCameraPoint.y - 1,initialCameraPoint.y + 1)
-                z = lerp(cameraPos.z, fixedTargetX, lerpSpeed, initialCameraPoint.z - 1, initialCameraPoint.z + 1)
+            }
+            default: {
+                const { a, b } = lerpWithCircleConstraint(
+                    cameraPos.y, cameraPos.z, 
+                    fixedTargetY, fixedTargetX, 
+                    lerpSpeed, 
+                    initialCameraPoint.y, initialCameraPoint.z, 
+                    1
+                )
                 return {
                     x: cameraPos.x,
-                    y: y,
-                    z: z,
+                    y: a,
+                    z: b,
                     tx: cameraPos.x + 0.1,
-                    ty: y,
-                    tz: z
+                    ty: a,
+                    tz: b
                 };
+            }
         }
     }
 
-    useFrame((state, delta) => {
+    useFrame((state) => {
         if (!room || transition) return;
 
         const targetX: number = (state.pointer.x * state.viewport.width) * 5; 
@@ -148,17 +199,11 @@ export default function Rig({
         const posTarget: PosTarget = getRoomPosTarget(room, mode, state.camera.position, fixedTargetX, fixedTargetY);
 
         if (controls && (controls as any).setPosition) {
-            (controls as any).setTarget(posTarget.tx * 1.03, posTarget.ty * 1.03, posTarget.tz * 1.03, false);
+            (controls as any).setTarget(posTarget.tx, posTarget.ty, posTarget.tz, false);
             (controls as any).setPosition(posTarget.x, posTarget.y, posTarget.z, false);
         } else {
             console.error("Controls not available or setPosition method is missing.");
         }
-
-        // const axis = getRoomAxis(room, mode, state.camera.position, fixedTargetX, fixedTargetY)
-
-        // state.camera.position.x = axis.x
-        // state.camera.position.y = axis.y
-        // state.camera.position.z = axis.z
     });
 
     function getCameraConfig(mode: ModeType, room: RoomType | null) {

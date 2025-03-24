@@ -11,8 +11,6 @@ type SceneProps = {
     setMode: React.Dispatch<React.SetStateAction<ModeType>>;
     room: RoomType | null;
     setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
-    inTransition: boolean;
-    setInTransition: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function Scene({ 
@@ -20,8 +18,6 @@ export default function Scene({
     setMode,
     room,
     setRoom,
-    inTransition,
-    setInTransition
   }: SceneProps) {
    
     return (
@@ -37,7 +33,7 @@ export default function Scene({
             <pointLight intensity={10} position={[3, 3, 3]} />
             <pointLight intensity={10} position={[-3, -3, -3]} />
             <Teseract mode={mode} setMode={setMode} room={room} setRoom={setRoom}/>
-            <Rig mode={mode} room={room} inTransition={inTransition}/>
+            <Rig mode={mode} room={room}/>
             <Stats/>
         </Canvas>
     );
