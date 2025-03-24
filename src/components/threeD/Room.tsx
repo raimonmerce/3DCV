@@ -2,24 +2,28 @@ import { ReactNode, useEffect, useRef } from 'react';
 import { MeshPhongMaterial } from 'three';
 import * as TWEEN from '@tweenjs/tween.js';
 import GLBModel from './GLBModel';
+import { Center, Text3D } from '@react-three/drei';
 
 type RoomProps = {
     url: string;
     color: string;
     children?: ReactNode;
     selected: boolean;
+    title: string;
 };
 
 export default function Room({ 
     url,
     color,
     children,
-    selected
+    selected,
+    title
 }: RoomProps) {
     const roomMaterial = useRef<MeshPhongMaterial>(null);
+    const textMaterial = useRef<meshStandardMaterial>(null);
     
     useEffect(() => {
-        if (!roomMaterial.current) return
+        if (!roomMaterial.current || !textMaterial.current) return
        
         const from = { opacity: roomMaterial.current.opacity}
         
@@ -27,17 +31,18 @@ export default function Room({
             ? { opacity: 0} 
             : { opacity: 1};
     
-        const delay = selected? 2000 : 0
+        const delay = selected? 1750 : 0
     
         if (from.opacity === to.opacity) return;
     
         const tween = new TWEEN.Tween(from)
-            .to(to, 500)
+            .to(to, 750)
             .delay(delay)
             .easing(TWEEN.Easing.Quadratic.Out)
             .onUpdate((obj) => {
-                if (!roomMaterial.current) return
+                if (!roomMaterial.current || !textMaterial.current) return
                 roomMaterial.current.opacity = obj.opacity;
+                textMaterial.current.opacity = obj.opacity;
             })
             .start();
     
@@ -61,7 +66,19 @@ export default function Room({
                 scale={[0.6, 0.6, 0.6]}
                 color={color}
             />
-            {selected &&
+            <Center>
+                <Text3D 
+                    letterSpacing={0}
+                    size={0.2}
+                    font="/3DCV/Inter_Bold.json"
+                    position={[0.1, 0, -0.1]}
+                    scale={[1, 1, 0.2]}
+                >
+                    {title}
+                    <meshStandardMaterial ref={textMaterial} emissiveIntensity={0.75} emissive={"white"} transparent opacity={1}/>
+                </Text3D>
+            </Center>
+            {selected && 
                 <>
                     <mesh position={[0, 0, -1]}>
                         <sphereGeometry args={[10, 32, 16]} />
@@ -70,7 +87,6 @@ export default function Room({
                     {children}
                 </>
             }
-            
         </> 
     );
 }

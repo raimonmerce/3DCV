@@ -1,5 +1,5 @@
 import { useRef, useState, ReactNode, useEffect, useCallback } from 'react';
-import { useCursor, MeshPortalMaterial, Text } from '@react-three/drei';
+import { useCursor, MeshPortalMaterial } from '@react-three/drei';
 import { Mesh, MeshStandardMaterial } from 'three';
 import * as TWEEN from '@tweenjs/tween.js';
 import { ModeType, RoomType } from '@/types/types';
@@ -93,16 +93,6 @@ export default function Side({
     <group>
       
         <>
-          <Text 
-            fontSize={0.3} 
-            anchorY="top" 
-            anchorX="left" 
-            lineHeight={0.8} 
-            position={[-0.9, 0.9, 0.01]} 
-            material-toneMapped={false}
-          >
-            {title}
-          </Text>
           <mesh
             name={id}
             onPointerOver={handlePointerOver}
@@ -111,7 +101,7 @@ export default function Side({
           >
             <planeGeometry args={[2, 2]} />
             <MeshPortalMaterial ref={portal} side={0} resolution={512} blur={0}>
-              <Room url={url} color={color} selected={room === id}>
+              <Room url={url} color={color} selected={room === id} title={title}>
                 {children}
               </Room>
             </MeshPortalMaterial>
