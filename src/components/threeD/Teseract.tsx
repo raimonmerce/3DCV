@@ -17,6 +17,8 @@ type TeseractBoxProps = {
     setMode: React.Dispatch<React.SetStateAction<ModeType>>;
     room: RoomType | null;
     setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
+    inTransition: boolean;
+    setInTransition: React.Dispatch<React.SetStateAction<boolean>>;
     setPanel: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
@@ -25,6 +27,8 @@ export default function Teseract({
     setMode,
     room,
     setRoom,
+    inTransition,
+    setInTransition,
     setPanel
 }: TeseractBoxProps) {
     const [animationFinished, setAnimationFinished] = useState(true);
@@ -62,6 +66,12 @@ export default function Teseract({
                 gear5.current?.rotation.set(-obj.rot, 0, 0);
             }).onComplete(() => {
                 setAnimationFinished(true)
+            // }).onStart(() => {
+            //     setInTransition(true)
+            //     console.log("Start")
+            // }).onComplete(() => {
+            //     setInTransition(false)
+            //     console.log("End")
             })
             .start();
     }, [mode]);
@@ -78,6 +88,7 @@ export default function Teseract({
                     mode={mode}
                     room={room}
                     setRoom={setRoom}
+                    inTransition={inTransition}
                 >
                     <AboutMe setPanel={setPanel}/>
                 </Side>
@@ -91,6 +102,7 @@ export default function Teseract({
                             mode={mode}
                             room={room}
                             setRoom={setRoom}
+                            inTransition={inTransition}
                         >
                             <Experience setPanel={setPanel}/>
                         </Side>
@@ -103,7 +115,8 @@ export default function Teseract({
                                     color="lightgreen" 
                                     mode={mode}
                                     room={room}
-                                    setRoom={setRoom} 
+                                    setRoom={setRoom}
+                                    inTransition={inTransition}
                                 >
                                     <Projects setPanel={setPanel}/>
                                 </Side>
@@ -119,6 +132,7 @@ export default function Teseract({
                                     mode={mode}
                                     room={room}
                                     setRoom={setRoom}
+                                    inTransition={inTransition}
                                 >
                                     <Contact setPanel={setPanel}/>
                                 </Side>   
@@ -136,6 +150,7 @@ export default function Teseract({
                             mode={mode}
                             room={room}
                             setRoom={setRoom}
+                            inTransition={inTransition}
                         >
                             <Studies setPanel={setPanel}/>
                         </Side>
@@ -151,6 +166,7 @@ export default function Teseract({
                             mode={mode}
                             room={room} 
                             setRoom={setRoom}
+                            inTransition={inTransition}
                         >
                             <CV setPanel={setPanel}/>
                         </Side>

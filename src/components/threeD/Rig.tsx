@@ -9,6 +9,7 @@ interface RigProps {
     focus?: THREE.Vector3;
     mode: ModeType;
     room: RoomType | null;
+    setInTransition: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 type PosTarget = {
@@ -24,7 +25,8 @@ export default function Rig({
     position = new THREE.Vector3(0, 0, 2), 
     focus = new THREE.Vector3(0, 0, 0),
     mode,
-    room
+    room,
+    setInTransition
 }: RigProps) {
     const { controls, scene } = useThree();
     const [transition, setTransition] = useState(false);
@@ -281,6 +283,7 @@ export default function Rig({
     async function initialTransition() {
         await (controls as any)?.setLookAt( 3, 8, 3, 0, 8, -1, false )
         await (controls as any)?.setLookAt( -3, 3, 3, 0, 0, -1, true )
+        setInTransition(false)
     }
 
     async function openTransition() {
@@ -306,16 +309,20 @@ export default function Rig({
 
     useEffect(() => {
         if (room) {
+            //setInTransition(true)
             roomTransition(room)
         } else {
             switch (mode) {
                 case "InitialBox":
+                    setInTransition(true)
                     initialTransition();
                     break;
                 case "OpenBox":
+                    // setInTransition(true)
                     openTransition()
                     break;
                 case "Teseract":
+                    // setInTransition(true)
                     teseractTransition()
                     break;
                 default:

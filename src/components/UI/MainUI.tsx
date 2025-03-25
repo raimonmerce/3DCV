@@ -10,11 +10,18 @@ type MainUIProps = {
   setMode: React.Dispatch<React.SetStateAction<ModeType>>;
   room: RoomType | null;
   setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
+  inTransition: boolean;
+  setInTransition: React.Dispatch<React.SetStateAction<boolean>>;
   panel: string | null;
   setPanel: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-const MainUI = ({ mode, setMode, room, setRoom, panel, setPanel }: MainUIProps) => {
+const MainUI = ({ 
+  mode, setMode, 
+  room, setRoom,
+  inTransition, setInTransition, 
+  panel, setPanel 
+}: MainUIProps) => {
   const [showBack, setShowBack] = useState(false);
 
   useEffect(() => {

@@ -12,6 +12,7 @@ type SideProps = {
   color?: string;
   mode: ModeType;
   room: RoomType | null;
+  inTransition: boolean;
   setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
   children?: ReactNode;
 };
@@ -23,6 +24,7 @@ export default function Side({
   color = '#f0f0f0', 
   mode,
   room,
+  inTransition,
   setRoom,
   children 
 }: SideProps) {
@@ -34,7 +36,7 @@ export default function Side({
 
   useEffect(() => {
     const material = emissiveMesh.current?.material as MeshStandardMaterial;
-    if (!material || !isHovered) return
+    if (!material || !isHovered || inTransition) return
     const tween = new TWEEN.Tween({ value: 0 })
     .to({ value: 1 }, 750)
     .easing(TWEEN.Easing.Quadratic.InOut)
@@ -59,9 +61,10 @@ export default function Side({
   }, []);
 
   const handleDoubleClick = useCallback(() => {
-    if (mode === "InitialBox") return
+    console.log("handleDoubleClick", inTransition)
+    if (mode === "InitialBox" || inTransition) return
     setRoom(id as RoomType);
-  }, [mode, setRoom, id]);
+  }, [mode, setRoom, id, inTransition]);
 
   useEffect(() => {
     if (!portal.current) return
