@@ -23,7 +23,7 @@ const MainUI = ({
   panel, setPanel 
 }: MainUIProps) => {
   const [showBack, setShowBack] = useState(false);
-
+  console.log(inTransition, setInTransition)
   useEffect(() => {
     if (room !== null) {
       const timer = setTimeout(() => {

@@ -31,6 +31,7 @@ export default function Teseract({
     setInTransition,
     setPanel
 }: TeseractBoxProps) {
+    console.log(setInTransition)
     const [animationFinished, setAnimationFinished] = useState(true);
     const gear1 = useRef<Mesh>(null);
     const gear2 = useRef<Mesh>(null);
