@@ -4,6 +4,10 @@ import OpenBoxUI from './OpenBoxUI';
 import RoomUI from './RoomUI';
 import TeseractUI from './TeseractUI';
 import { ModeType, RoomType } from '@/types/types';
+import { useState } from 'react'
+import ButtonIcon from './components/ButtonIcon';
+import Footer from './components/Footer';
+import {assets} from '../../assets/assets'
 
 type MainUIProps = {
   mode: ModeType;
@@ -17,6 +21,14 @@ const MainUI = ({
   room, setRoom
 }: MainUIProps) => {
 
+  const [isNavPanelVisible, setIsNavPanelVisible] = useState(false);
+
+  // Toggle the visibility of the navigation panel
+  const toggleNavPanel = () => {
+    console.log('change', isNavPanelVisible)
+    setIsNavPanelVisible(prev => !prev);
+  };
+
   return (
     <div
       style={{
@@ -26,18 +38,38 @@ const MainUI = ({
         width: '100vw',
         height: '100vh',
         pointerEvents: 'none',
+        overflowX: 'hidden',
+        overflowY: 'auto', 
       }}
     >
       {room ? (
         <RoomUI room={room} setRoom={setRoom} />
       ) : mode === "OpenBox" ? (
-        <OpenBoxUI setMode={setMode} />
+        <OpenBoxUI setMode={setMode}/>
       ) : mode === "Teseract" ? (
-        <TeseractUI setMode={setMode} />
+        <TeseractUI setMode={setMode}/>
       ) : mode === "InitialBox" ? (
         <InitialBoxUI/>
       ) : null}
-      <NavigationPanel mode={mode} setMode={setMode} room={room} setRoom={setRoom} />
+
+      <ButtonIcon
+        style={{
+          position: 'absolute',
+          top: '45px',
+          right: '30px',
+        }}
+        svgPath={assets.svg.menu}
+        onClick={toggleNavPanel}
+        size={'30px'}
+      />
+      <NavigationPanel 
+        mode={mode} 
+        setMode={setMode} 
+        room={room} 
+        setRoom={setRoom} 
+        isNavPanelVisible={isNavPanelVisible}
+      /> 
+      <Footer/>
     </div>
   );
 };

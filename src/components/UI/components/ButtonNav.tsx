@@ -1,4 +1,4 @@
-import './ButtonNav.css'; // Import the CSS file
+import './ButtonNav.css';
 
 type ButtonNavProps = {
   text: string;

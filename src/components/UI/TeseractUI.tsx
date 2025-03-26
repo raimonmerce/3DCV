@@ -16,7 +16,7 @@ export default function TeseractUI({
             style={{
                 position: 'absolute',
                 top: '40px',
-                right: 40,
+                right: '80px',
             }}
             svgPath={assets.svg.logo}
             onClick={() => setMode('OpenBox')}

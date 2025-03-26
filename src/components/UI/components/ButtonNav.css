@@ -14,22 +14,7 @@
   .button-nav.selected {
     color: #98FB98;
   }
-  
-  @media (min-width: 769px) {
-    .button-nav:hover {
-      transform: translateX(20px);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .button-nav {
-      transform: rotate(-70deg);
-      width: 50px;
-      transition: transform 0.3s ease;
-    }
-    
-    .button-nav.selected {
-      color: #98FB98;
-      transform: rotate(-70deg);
-    }
+
+  .button-nav:hover {
+    transform: translateX(-10px); /* Move the text 10px to the left on hover */
   }

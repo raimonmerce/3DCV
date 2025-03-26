@@ -1,29 +1,22 @@
+import React from 'react';
+import './ButtonIcon.css';
 import Icon from './Icon';
 
 type ButtonIconProps = {
   onClick: () => void;
   svgPath?: string;
   style?: React.CSSProperties;
+  size?: string;
 };
 
-const ButtonIcon = ({ svgPath, onClick, style }: ButtonIconProps) => {
+const ButtonIcon = ({ svgPath, onClick, style, size = '40px' }: ButtonIconProps) => {
   return (
     <button
-      style={{
-        fontSize: '20px',
-        pointerEvents: 'auto',
-        cursor: 'pointer',
-        textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
-        transition: 'color 0.2s ease',
-        display: 'flex',
-        alignItems: 'center',
-        background: 'transparent',
-        border: 0,
-        ...style,
-      }}
+      className="button-icon"
+      style={style}
       onClick={onClick}
     >
-      <Icon svgPath={svgPath}/>
+      <Icon svgPath={svgPath} size={size} />
     </button>
   );
 };

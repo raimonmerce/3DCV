@@ -1,18 +1,15 @@
 .navigation-panel {
     position: absolute;
-    left: 20px;
+    right: 30px;
     top: 30vh;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
+    align-items: flex-end;
+    transform: translateX(150%);
   }
 
-  @media (max-width: 768px) {
-    .navigation-panel {
-      bottom: 40px;
-      top: auto;
-      flex-direction: row;
-      gap: 5px;
-    }
+  .navigation-panel.show {
+    transform: translateX(0);
   }

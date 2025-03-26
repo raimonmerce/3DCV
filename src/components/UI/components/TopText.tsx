@@ -9,10 +9,10 @@ export default function TopText ({
     <div
       style={{
         position: 'absolute',
-        top: '18px',
+        top: '30px',
         left: '50%',
         transform: 'translateX(-50%)',
-        fontSize: '18px',
+        fontSize: '15px',
         color: 'white',
         textAlign: 'center',
         animation: 'blink 1.5s infinite alternate',

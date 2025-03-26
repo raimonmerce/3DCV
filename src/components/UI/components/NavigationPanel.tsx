@@ -8,9 +8,10 @@ type NavigationPanelProps = {
   setMode: React.Dispatch<React.SetStateAction<ModeType>>;
   room: RoomType | null;
   setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
+  isNavPanelVisible: boolean;
 };
 
-const NavigationPanel = ({ mode, setMode, room, setRoom }: NavigationPanelProps) => {
+const NavigationPanel = ({ mode, setMode, room, setRoom, isNavPanelVisible }: NavigationPanelProps) => {
 
   const goToRoom = (room: RoomType) => {
     if (mode === "InitialBox") {
@@ -22,7 +23,7 @@ const NavigationPanel = ({ mode, setMode, room, setRoom }: NavigationPanelProps)
   };
 
   return (
-    <div className="navigation-panel">
+    <div className={`navigation-panel ${isNavPanelVisible ? 'show' : ''}`}>
       <ButtonNav text={"EXPERIENCE"} selected={room === "Experience"} onClick={() => goToRoom('Experience')}/>
       <ButtonNav text={"PROJECTS"} selected={room === "Projects"} onClick={() => goToRoom('Projects')}/>
       <ButtonNav text={"STUDIES"} selected={room === "Studies"} onClick={() => goToRoom('Studies')}/>
