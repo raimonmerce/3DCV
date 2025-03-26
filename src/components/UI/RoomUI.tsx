@@ -58,7 +58,7 @@ export default function RoomUI({
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          width: '70vw',
+          width: '60vw',
           height: '60vh',
           opacity: fadeIn ? 0.8 : 0,
           transition: 'opacity 1s cubic-bezier(0.42, 0, 0.58, 1) 0s, opacity 1s ease-out 0.1s', // 1s ease-in and 0.3s ease-out

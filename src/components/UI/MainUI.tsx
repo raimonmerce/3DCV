@@ -4,7 +4,7 @@ import OpenBoxUI from './OpenBoxUI';
 import RoomUI from './RoomUI';
 import TeseractUI from './TeseractUI';
 import { ModeType, RoomType } from '@/types/types';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ButtonIcon from './components/ButtonIcon';
 import Footer from './components/Footer';
 import {assets} from '../../assets/assets'
@@ -24,9 +24,16 @@ const MainUI = ({
   const [isNavPanelVisible, setIsNavPanelVisible] = useState(false);
 
   const toggleNavPanel = () => {
-    console.log('change', isNavPanelVisible)
     setIsNavPanelVisible(prev => !prev);
   };
+
+  useEffect(() => {
+    console.log('windows size', window.innerWidth)
+    const isMobile = window.innerWidth <= 768; // Adjust breakpoint if needed
+    if (isMobile) {
+      setIsNavPanelVisible(false);
+    }
+  }, [room]);
 
   return (
     <div
