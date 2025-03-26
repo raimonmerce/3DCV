@@ -8,12 +8,12 @@
 :root {
     --color-background1: #FF6F61;
     --color-background2: #FFD3B6;
-    --color-aboutme: #FF6B60;
-    --color-contact: #FFA060;
-    --color-cv: #FFE066;
-    --color-experience: #5A9ED6;
-    --color-projects: #76D67A;
-    --color-studies: #C28EDC;
+    --color-aboutme: #007F5F ;
+    --color-contact: #2B9348 ;
+    --color-cv: #80B918 ;
+    --color-experience: #AACC00 ;
+    --color-projects: #55A630 ;
+    --color-studies: #C6E377 ; 
 }
 
 @keyframes primaryPulse {

@@ -32,7 +32,6 @@ export default function Rig({
         const distance = Math.sqrt(dx * dx + dy * dy);
       
         if (distance > radius) {
-            console.log("AAA")
             const angle = Math.atan2(dy, dx);
             const clampedX = cx + radius * Math.cos(angle);
             const clampedY = cy + radius * Math.sin(angle);

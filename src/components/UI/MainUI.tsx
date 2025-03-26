@@ -28,7 +28,6 @@ const MainUI = ({
   };
 
   useEffect(() => {
-    console.log('windows size', window.innerWidth)
     const isMobile = window.innerWidth <= 768; // Adjust breakpoint if needed
     if (isMobile) {
       setIsNavPanelVisible(false);

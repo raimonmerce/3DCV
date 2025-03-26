@@ -33,6 +33,8 @@ export default function GLBModel({
             });
           } else if (mesh.material instanceof THREE.MeshStandardMaterial) {
             mesh.material.color.set(new THREE.Color(color));
+            mesh.material.emissive= new THREE.Color(color)
+            mesh.material.emissiveIntensity=0.1
           }
         }
       });
