@@ -1,7 +1,7 @@
 // import RoomObject from '../RoomObject';
 // import {assets} from '../../../assets/assets'
 
-export default function Studies() {
+export default function StudiesUI() {
   return (
     <>
     </>

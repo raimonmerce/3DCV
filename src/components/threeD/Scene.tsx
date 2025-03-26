@@ -13,14 +13,12 @@ type SceneProps = {
     setRoom: React.Dispatch<React.SetStateAction<RoomType | null>>;
     inTransition: boolean;
     setInTransition: React.Dispatch<React.SetStateAction<boolean>>;
-    setPanel: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export default function Scene({ 
     mode, setMode,
     room, setRoom,
-    inTransition, setInTransition, 
-    setPanel
+    inTransition, setInTransition
   }: SceneProps) {
    
     return (
@@ -40,12 +38,10 @@ export default function Scene({
                 room={room} setRoom={setRoom}
                 inTransition={inTransition}
                 setInTransition={setInTransition}
-                setPanel={setPanel}
             />
             <Rig
                 mode={mode}
                 room={room}
-                inTransition={inTransition}
                 setInTransition={setInTransition}
             />
             <Stats/>

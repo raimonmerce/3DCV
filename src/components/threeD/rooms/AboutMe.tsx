@@ -1,13 +1,7 @@
-import RoomObject from '../RoomObject';
-import {assets} from '../../../assets/assets'
+// import RoomObject from '../RoomObject';
+// import {assets} from '../../../assets/assets'
 
-type AboutMeProps = {
-  setPanel: React.Dispatch<React.SetStateAction<string | null>>;
-};
-
-export default function AboutMe({ 
-  setPanel
-}: AboutMeProps) {
+export default function AboutMe() {
 
   return (
     <>
