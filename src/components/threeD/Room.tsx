@@ -23,6 +23,7 @@ export default function Room({
     const textMaterial = useRef<MeshStandardMaterial>(null);
     const [insideRoom, setInsideRoom] = useState(false);
     useEffect(() => {
+        if(!selected) setInsideRoom(false)
         if (!roomMaterial.current || !textMaterial.current) return
        
         const from = { opacity: roomMaterial.current.opacity}
@@ -34,6 +35,7 @@ export default function Room({
         const delay = selected? 1750 : 0
     
         if (from.opacity === to.opacity) return;
+        
     
         const tween = new TWEEN.Tween(from)
             .to(to, 750)
@@ -45,7 +47,7 @@ export default function Room({
                 textMaterial.current.opacity = obj.opacity;
             })
             .onComplete(() => {
-                setInsideRoom(true)
+                setInsideRoom(selected)
             })
             .start();
     

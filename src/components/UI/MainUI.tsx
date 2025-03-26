@@ -23,7 +23,6 @@ const MainUI = ({
   panel, setPanel 
 }: MainUIProps) => {
   const [showBack, setShowBack] = useState(false);
-  console.log(inTransition, setInTransition)
   useEffect(() => {
     if (room !== null) {
       const timer = setTimeout(() => {
@@ -35,6 +34,24 @@ const MainUI = ({
       setShowBack(false);
     }
   }, [room]);
+
+  const handleDownload = async (url: string, name: string) => {
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob); // Renamed variable
+  
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("Error downloading the file", error);
+    }
+  };
 
   return (
     <div
@@ -49,15 +66,28 @@ const MainUI = ({
     >
       {mode !== 'InitialBox' && (
         room && showBack? (
-          <ButtonIcon
-            style={{
-              position: 'absolute',
-              top: '40px',
-              left: 40,
-            }}
-            svgPath={assets.svg.back}
-            onClick={() => setRoom(null)}
-          />
+          <>
+            <ButtonIcon
+              style={{
+                position: 'absolute',
+                top: '40px',
+                left: 40,
+              }}
+              svgPath={assets.svg.back}
+              onClick={() => setRoom(null)}
+            />
+            <ButtonIcon
+              style={{
+                position: 'absolute',
+                top: '40px',
+                left: 80,
+              }}
+              svgPath={assets.svg.download}
+              onClick={() => {handleDownload(assets.pdf.cveng, "Raimon_Merce_CV_Eng.pdf")}}
+            />
+          </>
+
+
         ) : (
           <ButtonIcon
             style={{

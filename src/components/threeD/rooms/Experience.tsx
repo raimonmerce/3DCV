@@ -6,7 +6,6 @@ type ExperienceProps = {
 export default function Experience({
   setPanel
 }: ExperienceProps) {
-  console.log(setPanel)
   return (
     <>
 

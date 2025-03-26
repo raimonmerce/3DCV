@@ -11,6 +11,7 @@ import { ModeType, RoomType } from '@/types/types';
 import * as TWEEN from '@tweenjs/tween.js';
 import { Mesh } from 'three';
 import {assets} from '../../assets/assets'
+import { getCssVariableValue } from '../../utils/utils';
 
 type TeseractBoxProps = {
     mode: ModeType;
@@ -31,7 +32,6 @@ export default function Teseract({
     setInTransition,
     setPanel
 }: TeseractBoxProps) {
-    console.log(setInTransition)
     const [animationFinished, setAnimationFinished] = useState(true);
     const gear1 = useRef<Mesh>(null);
     const gear2 = useRef<Mesh>(null);
@@ -85,7 +85,7 @@ export default function Teseract({
                     id="AboutMe"
                     title="About Me"
                     url={assets.models.aboutme}
-                    color="indianred" 
+                    color={getCssVariableValue("--color-aboutme")} 
                     mode={mode}
                     room={room}
                     setRoom={setRoom}
@@ -99,7 +99,7 @@ export default function Teseract({
                             id="Experience"
                             title="Experience"
                             url={assets.models.experience}
-                            color="lightblue" 
+                            color={getCssVariableValue("--color-experience")} 
                             mode={mode}
                             room={room}
                             setRoom={setRoom}
@@ -113,7 +113,7 @@ export default function Teseract({
                                     id="Projects"
                                     title="Projects"
                                     url={assets.models.projects}
-                                    color="lightgreen" 
+                                    color={getCssVariableValue("--color-projects")}  
                                     mode={mode}
                                     room={room}
                                     setRoom={setRoom}
@@ -129,7 +129,7 @@ export default function Teseract({
                                     id="Contact"
                                     title="Contact"
                                     url={assets.models.contact}
-                                    color="hotpink" 
+                                    color={getCssVariableValue("--color-contact")} 
                                     mode={mode}
                                     room={room}
                                     setRoom={setRoom}
@@ -147,7 +147,7 @@ export default function Teseract({
                             id="Studies"
                             title="Studies"
                             url={assets.models.studies}
-                            color="aquamarine" 
+                            color={getCssVariableValue("--color-studies")} 
                             mode={mode}
                             room={room}
                             setRoom={setRoom}
@@ -163,7 +163,7 @@ export default function Teseract({
                             id="CV"
                             title="CV"
                             url={assets.models.cv}
-                            color="orange"
+                            color={getCssVariableValue("--color-cv")} 
                             mode={mode}
                             room={room} 
                             setRoom={setRoom}

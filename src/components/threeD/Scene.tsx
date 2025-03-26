@@ -26,7 +26,7 @@ export default function Scene({
     return (
         <Canvas 
             style={{
-                background: `linear-gradient(to bottom, ${getCssVariableValue("--color-primary")}, ${getCssVariableValue("--color-secondary")})`,
+                background: `linear-gradient(to bottom, ${getCssVariableValue("--color-background1")}, ${getCssVariableValue("--color-background2")})`,
                 height: '100vh',
             }}
             camera={{ position: [2000, 2000, 2000]}}
@@ -42,7 +42,12 @@ export default function Scene({
                 setInTransition={setInTransition}
                 setPanel={setPanel}
             />
-            <Rig mode={mode} room={room} setInTransition={setInTransition}/>
+            <Rig
+                mode={mode}
+                room={room}
+                inTransition={inTransition}
+                setInTransition={setInTransition}
+            />
             <Stats/>
         </Canvas>
     );

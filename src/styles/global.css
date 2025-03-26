@@ -5,8 +5,14 @@
 }
 
 :root {
-    --color-primary: #6a11cb;
-    --color-secondary: #2575fc;
+    --color-background1: #FF6F61;
+    --color-background2: #FFD3B6;
+    --color-aboutme: #FF6B60;
+    --color-contact: #FFA060;
+    --color-cv: #FFE066;
+    --color-experience: #5A9ED6;
+    --color-projects: #76D67A;
+    --color-studies: #C28EDC;
 }
 
 @keyframes primaryPulse {

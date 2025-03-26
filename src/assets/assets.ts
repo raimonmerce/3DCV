@@ -20,6 +20,8 @@ import uef from './images/uef.png';
 import ujm from './images/ujm.png';
 import unionavatars from './images/unionavatars.png';
 import upc from './images/upc.png';
+import CVEng from './pdf/CVEng.pdf';
+import CVEsp from './pdf/CVEsp.pdf';
 
 export const assets = {
     models: {
@@ -49,6 +51,10 @@ export const assets = {
         ujm: ujm,
         unionavatars: unionavatars,
         upc: upc
+    },
+    pdf: {
+        cveng: CVEng,
+        cvesp: CVEsp
     }
 };
 

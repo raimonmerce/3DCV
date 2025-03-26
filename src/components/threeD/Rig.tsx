@@ -9,6 +9,7 @@ interface RigProps {
     focus?: THREE.Vector3;
     mode: ModeType;
     room: RoomType | null;
+    inTransition: boolean;
     setInTransition: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -26,6 +27,7 @@ export default function Rig({
     focus = new THREE.Vector3(0, 0, 0),
     mode,
     room,
+    inTransition,
     setInTransition
 }: RigProps) {
     const { controls, scene } = useThree();
@@ -43,6 +45,7 @@ export default function Rig({
         centerY: number, 
         radius: number
     ): { a: number, b: number } {
+        return { a: currentX, b: currentY };
         let newX = currentX + (targetX - currentX) * alpha;
         let newY = currentY + (targetY - currentY) * alpha;
     
@@ -190,7 +193,9 @@ export default function Rig({
     }
 
     useFrame((state) => {
-        if (!room || transition) return;
+        return
+        console.log('inTransition', inTransition)
+        if (!room || transition || inTransition) return;
 
         const targetX: number = (state.pointer.x * state.viewport.width) * 5; 
         const targetY: number = (state.pointer.y * state.viewport.height) * 5;
@@ -296,7 +301,7 @@ export default function Rig({
     }
 
     async function roomTransition(room: RoomType) {
-        setTransition(true)
+        //setTransition(true)
         const active = scene.getObjectByName(room);
         if (active) {
             active.parent?.localToWorld(position.set(0, 0, 1));
@@ -304,16 +309,20 @@ export default function Rig({
         }
         await (controls as any)?.setLookAt(...position.toArray(), ...focus.toArray(), true);
         setInitialCameraPoint({x: position.x, y: position.y, z: position.z})
-        setTransition(false)
+        console.log("C")
+        setInTransition(false)
+        console.log("setInTransition", inTransition)
     }
 
     useEffect(() => {
         if (room) {
-            //setInTransition(true)
+            console.log("A")
+            setInTransition(true)
             roomTransition(room)
         } else {
             switch (mode) {
                 case "InitialBox":
+                    console.log("B")
                     setInTransition(true)
                     initialTransition();
                     break;

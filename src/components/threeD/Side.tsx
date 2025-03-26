@@ -61,7 +61,6 @@ export default function Side({
   }, []);
 
   const handleDoubleClick = useCallback(() => {
-    console.log("handleDoubleClick", inTransition)
     if (mode === "InitialBox" || inTransition) return
     setRoom(id as RoomType);
   }, [mode, setRoom, id, inTransition]);
