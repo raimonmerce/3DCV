@@ -23,7 +23,6 @@ const MainUI = ({
 
   const [isNavPanelVisible, setIsNavPanelVisible] = useState(false);
 
-  // Toggle the visibility of the navigation panel
   const toggleNavPanel = () => {
     console.log('change', isNavPanelVisible)
     setIsNavPanelVisible(prev => !prev);
@@ -69,7 +68,17 @@ const MainUI = ({
         setRoom={setRoom} 
         isNavPanelVisible={isNavPanelVisible}
       /> 
-      <Footer/>
+      <Footer
+        instruction={
+          room
+            ? null
+            : mode === 'OpenBox' || mode === 'Teseract'
+            ? 'Double click to enter a Portal'
+            : mode === 'InitialBox'
+            ? 'Click the Box to start'
+            : null
+        }
+      />
     </div>
   );
 };

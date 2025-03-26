@@ -1,20 +1,16 @@
-import React from 'react';
+import './Footer.css';
 
-const Footer: React.FC= () => {
+type ButtonIconProps = {
+  instruction?: string | null;
+};
+
+const Footer = ({ instruction }: ButtonIconProps) => {
   return (
-    <div 
-      style={{
-        position: 'absolute',
-        bottom: '10px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        color: 'white',
-        fontSize: '15px',
-        textAlign: 'center',
-        opacity: 0.8,
-      }}
-    >
-        Made by Raimon Mercé
+    <div className="footer">
+      {instruction &&
+        <div className="footer-text">{instruction}</div>
+      }
+      <p>Made by Raimon Mercé</p>
     </div>
   );
 };
