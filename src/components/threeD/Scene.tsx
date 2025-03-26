@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { Stats } from "@react-three/drei";
+// import { Stats } from "@react-three/drei";
 import Teseract from "./Teseract";
 import Tween from "./Tween";
 import Rig from './Rig';  
