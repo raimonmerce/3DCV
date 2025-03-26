@@ -93,7 +93,7 @@ export default function Room({
                 <>
                     <mesh position={[0, 0, -1]}>
                         <sphereGeometry args={[10, 32, 16]} />
-                        <meshPhongMaterial color={color} side={2}/>
+                        <meshPhongMaterial color={color} side={2} emissive={color} emissiveIntensity={0.3}/>
                     </mesh> 
                     {children}
                 </>

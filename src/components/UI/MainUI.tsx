@@ -1,4 +1,5 @@
 import NavigationPanel from './components/NavigationPanel';
+import InitialBoxUI from './InitialBoxUI';
 import OpenBoxUI from './OpenBoxUI';
 import RoomUI from './RoomUI';
 import TeseractUI from './TeseractUI';
@@ -33,6 +34,8 @@ const MainUI = ({
         <OpenBoxUI setMode={setMode} />
       ) : mode === "Teseract" ? (
         <TeseractUI setMode={setMode} />
+      ) : mode === "InitialBox" ? (
+        <InitialBoxUI/>
       ) : null}
       <NavigationPanel mode={mode} setMode={setMode} room={room} setRoom={setRoom} />
     </div>

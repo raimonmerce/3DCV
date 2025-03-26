@@ -1,6 +1,7 @@
 import { ModeType } from '@/types/types';
 import ButtonIcon from './components/ButtonIcon';
 import {assets} from '../../assets/assets'
+import TopText from "./components/TopText";
 
 type TeseractUIProps = {
   setMode: React.Dispatch<React.SetStateAction<ModeType>>;
@@ -20,6 +21,7 @@ export default function TeseractUI({
             svgPath={assets.svg.logo}
             onClick={() => setMode('OpenBox')}
         />
+        <TopText text={'Double click a Portal to enter'}/>
     </>
   );
 }
