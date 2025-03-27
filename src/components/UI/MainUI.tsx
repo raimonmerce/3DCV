@@ -28,10 +28,7 @@ const MainUI = ({
   };
 
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768; // Adjust breakpoint if needed
-    if (isMobile) {
-      setIsNavPanelVisible(false);
-    }
+    setIsNavPanelVisible(false)
   }, [room]);
 
   return (

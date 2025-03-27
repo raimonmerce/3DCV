@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import Side from "./Side";
-import AboutMe from "./rooms/AboutMe";
-import Contact from "./rooms/Contact";
-import Experience from "./rooms/Experience";
-import CV from "./rooms/CV";
-import Projects from "./rooms/Projects";
-import Studies from "./rooms/Studies";
 import InitialBox from "./InitialBox";
 import { ModeType, RoomType } from '@/types/types';
 import * as TWEEN from '@tweenjs/tween.js';
@@ -82,7 +76,6 @@ export default function Teseract({
                     setRoom={setRoom}
                     inTransition={inTransition}
                 >
-                    <AboutMe/>
                 </Side>
                 <group ref={gear1} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                     <group position={[1, 0, 0]}>
@@ -96,7 +89,6 @@ export default function Teseract({
                             setRoom={setRoom}
                             inTransition={inTransition}
                         >
-                            <Experience/>
                         </Side>
                         <group ref={gear2} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                             <group position={[1, 0, 0]}>
@@ -110,7 +102,6 @@ export default function Teseract({
                                     setRoom={setRoom}
                                     inTransition={inTransition}
                                 >
-                                    <Projects/>
                                 </Side>
                             </group>
                         </group>
@@ -126,7 +117,6 @@ export default function Teseract({
                                     setRoom={setRoom}
                                     inTransition={inTransition}
                                 >
-                                    <Contact/>
                                 </Side>   
                             </group>
                         </group>
@@ -144,7 +134,6 @@ export default function Teseract({
                             setRoom={setRoom}
                             inTransition={inTransition}
                         >
-                            <Studies/>
                         </Side>
                         </group>
                     </group>
@@ -160,7 +149,6 @@ export default function Teseract({
                             setRoom={setRoom}
                             inTransition={inTransition}
                         >
-                            <CV/>
                         </Side>
                     </group>
                 </group>

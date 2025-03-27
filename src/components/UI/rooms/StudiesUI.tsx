@@ -12,7 +12,7 @@ export default function StudiesUI() {
           contentArrowStyle={{ borderRight: '7px solid  rgb(175, 36, 18)' }}
           date="Agu. 2022 – Feb. 2023"
           dateClassName='goRight'
-          iconStyle={{ background: 'rgb(94, 186, 216)', color: '#fff' }}
+          iconStyle={{ background: '#fff', color: '#fff' }}
           icon={<img src={assets.svg.tut} alt="icon" style={{ width: "100%", height: "100%", borderRadius: "50%"  }} />}
         >
           <h3 className="vertical-timeline-element-title">Toyohashi University of Technology (TUT)</h3>

@@ -1,29 +1,42 @@
+import cvEng from './images/cvEng.png';
+import cvEsp from './images/cvEsp.png';
+import face from './images/face.jpg';
+
 import aboutme from './models/aboutme.glb';
 import contact from './models/contact.glb';
 import cv from './models/cv.glb';
 import experience from './models/experience.glb';
 import projects from './models/projects.glb';
 import studies from './models/studies.glb';
-import close from './svg/close.svg';
-import front from './svg/front.svg';
-import back from './svg/back.svg';
-import cube from './svg/cube.svg';
-import logo from './svg/logo.svg';
-import menu from './svg/menu.svg';
-import download from './svg/download.svg';
 
+import CVEng from './pdf/CVEng.pdf';
+import CVEsp from './pdf/CVEsp.pdf';
+
+import back from './svg/back.svg';
 import blender from './svg/blender.svg';
-import cimne from './svg/cimne.svg';
-import cpp from './svg/cpp.svg';
 import csh from './svg/csh.svg';
+import cimne from './svg/cimne.svg';
+import close from './svg/close.svg';
+import cube from './svg/cube.svg';
+import cpp from './svg/cpp.svg';
 import ctu from './svg/ctu.svg';
+import download from './svg/download.svg';
 import ecb from './svg/ecb.svg';
+import email from './svg/email.svg';
 import floorfy from './svg/floorfy.svg';
+import front from './svg/front.svg';
+import github from './svg/github.svg';
 import git from './svg/git.svg';
 import js from './svg/js.svg';
+import linkedin from './svg/linkedin.svg';
+import location from './svg/location.svg';
+import logo from './svg/logo.svg';
+import menu from './svg/menu.svg';
 import opengl from './svg/opengl.svg';
+import php from './svg/php.svg';
 import python from './svg/python.svg';
 import react from './svg/react.svg';
+import symfony from './svg/symfony.svg';
 import threejs from './svg/threejs.svg';
 import tmrw from './svg/tmrw.svg';
 import ts from './svg/ts.svg';
@@ -34,19 +47,12 @@ import unionavatars from './svg/unionavatars.svg';
 import unity from './svg/unity.svg';
 import upc from './svg/upc.svg';
 
-// import cimne from './images/cimne.png';
-// import ctu from './images/ctu.jpg';
-// import ctu2 from './images/ctu2.jpg';
-// import tmrw from './images/tmrw.png';
-// import tut from './images/tut.png';
-// import uef from './images/uef.png';
-// import ujm from './images/ujm.png';
-// import unionavatars from './images/unionavatars.png';
-// import upc from './images/upc.png';
-import CVEng from './pdf/CVEng.pdf';
-import CVEsp from './pdf/CVEsp.pdf';
-
 export const assets = {
+    images: {
+        cvEng: cvEng,
+        cvEsp: cvEsp,
+        face: face
+    },
     models: {
         aboutme: aboutme,
         contact: contact,
@@ -55,26 +61,36 @@ export const assets = {
         projects: projects,
         studies: studies
     },
+    pdf: {
+        cveng: CVEng,
+        cvesp: CVEsp
+    },
     svg: {
-        close: close,
-        front: front,
         back: back,
-        cube: cube,
-        ecb: ecb,
-        logo: logo,
-        menu: menu,
-        download: download,
         blender: blender,
-        cimne: cimne,
-        cpp: cpp,
         csh: csh,
+        cimne: cimne,
+        close: close,
+        cube: cube,
+        cpp: cpp,
         ctu: ctu,
+        download: download,
+        ecb: ecb,
+        email: email,
         floorfy: floorfy,
+        front: front,
+        github: github,
         git: git,
         js: js,
+        linkedin: linkedin,
+        location: location,
+        logo: logo,
+        menu: menu,
         opengl: opengl,
+        php: php,
         python: python,
         react: react,
+        symfony: symfony,
         threejs: threejs,
         tmrw: tmrw,
         ts: ts,
@@ -84,21 +100,5 @@ export const assets = {
         unionavatars: unionavatars,
         unity: unity,
         upc: upc
-    },
-    // images: {
-    //     cimne: cimne,
-    //     ctu: ctu,
-    //     ctu2: ctu2,
-    //     tmrw: tmrw,
-    //     tut: tut,
-    //     uef: uef,
-    //     ujm: ujm,
-    //     unionavatars: unionavatars,
-    //     upc: upc
-    // },
-    pdf: {
-        cveng: CVEng,
-        cvesp: CVEsp
     }
 };
-

@@ -7,17 +7,21 @@ type ButtonIconProps = {
   svgPath?: string;
   style?: React.CSSProperties;
   size?: string;
+  text?: string;
 };
 
-const ButtonIcon = ({ svgPath, onClick, style, size = '40px' }: ButtonIconProps) => {
+const ButtonIcon = ({ svgPath, onClick, style, size = '40px', text }: ButtonIconProps) => {
   return (
-    <button
-      className="button-icon"
-      style={style}
-      onClick={onClick}
-    >
-      <Icon svgPath={svgPath} size={size} />
-    </button>
+    <div>
+      <button
+        className="button-icon"
+        style={style}
+        onClick={onClick}
+      >
+        <Icon svgPath={svgPath} size={size} />
+        {text}
+      </button>
+    </div>
   );
 };
 

@@ -1,0 +1,45 @@
+.skills-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.skill-item {
+  margin: 10px;
+}
+
+.skill-icon {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.7s ease-in-out;
+}
+
+.skill-icon:hover {
+  animation: rotateAnimation 0.7s ease-in-out;
+}
+
+.portrait {
+  max-width: 100%;
+  max-height: 280px;
+  height: auto;
+  border-radius: 10px;
+  float: right;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  object-fit: contain; 
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

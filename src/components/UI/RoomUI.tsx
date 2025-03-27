@@ -54,7 +54,6 @@ export default function RoomUI({
           boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
           fontSize: '20px',
           pointerEvents: 'auto',
-          cursor: 'pointer',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
