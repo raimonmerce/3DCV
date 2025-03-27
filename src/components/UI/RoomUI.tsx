@@ -58,12 +58,26 @@ export default function RoomUI({
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          width: '60vw',
-          height: '60vh',
+          width: '70vw',
+          height: '70vh',
           opacity: fadeIn ? 0.8 : 0,
-          transition: 'opacity 1s cubic-bezier(0.42, 0, 0.58, 1) 0s, opacity 1s ease-out 0.1s', // 1s ease-in and 0.3s ease-out
+          transition: 'opacity 1s cubic-bezier(0.42, 0, 0.58, 1) 0s, opacity 1s ease-out 0.1s',
+          overflow: 'hidden'
         }}>
-        <div style={{ textAlign: 'center' }}>
+        <h1 style={{
+          marginBlockEnd: 15,
+          marginBlockStart: 0,
+        }}>{room}</h1>
+        <div 
+          style={{
+            textAlign: 'center',
+            overflowY: 'auto',
+            maxHeight: '100%',
+            width: '100%',
+            paddingRight: '10px',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}>
           {(() => {
               switch (room) {
                 case 'AboutMe':
