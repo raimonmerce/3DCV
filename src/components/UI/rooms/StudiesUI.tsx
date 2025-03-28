@@ -37,11 +37,11 @@ export default function StudiesUI() {
         </VerticalTimelineElement>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
-          contentStyle={{ background: 'rgb(255, 255, 255)', color: '#000' }}
-          contentArrowStyle={{ borderRight: '7px solid  rgb(255, 255, 255)' }}
+          contentStyle={{ background: '#222', color: '#fff' }}
+          contentArrowStyle={{ borderRight: '7px solid  #222' }}
           date="Sep. 2021 – Jan. 2022"
           dateClassName='goRight'
-          iconStyle={{ background: 'rgb(255, 255, 255)', color: '#000' }}
+          iconStyle={{ background: '#222', color: '#fff' }}
           icon={<img src={assets.svg.uef} alt="icon" style={{ width: "100%", height: "100%", borderRadius: "50%"  }} />}
         >
           <h3 className="vertical-timeline-element-title">University of Eastern Finland (UEF)

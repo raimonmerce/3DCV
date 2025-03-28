@@ -44,9 +44,8 @@ const MainUI = ({
         overflowY: 'auto', 
       }}
     >
-      {room ? (
-        <RoomUI room={room} setRoom={setRoom} />
-      ) : mode === "OpenBox" ? (
+      <RoomUI room={room} setRoom={setRoom} />
+      {mode === "OpenBox" ? (
         <OpenBoxUI setMode={setMode}/>
       ) : mode === "Teseract" ? (
         <TeseractUI setMode={setMode}/>
