@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import ButtonIcon from '../components/ButtonIcon';
 import { navigateTo } from '../../../utils/utils';
 import { assets } from '../../../assets/assets';
