@@ -78,7 +78,7 @@ export default function Room({
                         <Text3D 
                             letterSpacing={0}
                             size={0.2}
-                            font="/3DCV/Inter_Bold.json"
+                            font="/Inter_Bold.json"
                             position={[0.1, 0, -0.1]}
                             scale={[1, 1, 0.2]}
                         >
