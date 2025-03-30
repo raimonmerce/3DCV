@@ -4,7 +4,7 @@
 .maindiv {
     width: 100vw; 
     height: 100vh; 
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
     overflow-y: auto;  
 }
 
@@ -19,38 +19,6 @@ body {
     --color-contact: #77C6E3;
     --color-cv: #D9A848;
     --color-experience: #88A300;
-    --color-projects: #E377C6;
-    --color-studies: #B4DB55; 
-}
-
-@keyframes primaryPulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-}
-  
-@keyframes secondaryPulse {
-    0%, 80%  {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(6);
-        opacity: 0;
-    }
-}
-
-@keyframes blink {
-    0% {
-        opacity: 0;
-    }
-    70% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    --color-projects: #B4DB55; 
+    --color-studies: #E377C6; 
 }

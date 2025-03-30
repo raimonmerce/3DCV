@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './Icon.css'; // Import the external CSS file
+import './Icon.css';
 
 type IconProps = {
   svgPath?: string;
@@ -8,13 +8,12 @@ type IconProps = {
 
 const Icon = ({ svgPath, size = '40px' }: IconProps) => {
   const [hovered, setHovered] = useState(false);
-  const [fadeIn, setFadeIn] = useState(false); // State for fade-in effect
-  const iconRef = useRef<HTMLDivElement | null>(null); // Reference to the icon container
+  const [fadeIn, setFadeIn] = useState(false);
+  const iconRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    // Set fadeIn to true after the component mounts
-    const timeout = setTimeout(() => setFadeIn(true), 100); // Delay the fade-in effect
-    return () => clearTimeout(timeout); // Cleanup timeout on component unmount
+    const timeout = setTimeout(() => setFadeIn(true), 100);
+    return () => clearTimeout(timeout);
   }, []);
 
   return (

@@ -66,11 +66,12 @@ export default function Teseract({
         <>
             {mode === 'InitialBox' && animationFinished && <InitialBox setMode={setMode}/>}
             <group ref={box} position={[0, 0, -2]} >
-                <Side
-                    id="AboutMe"
-                    title="About Me"
-                    url={assets.models.aboutme}
-                    color={getCssVariableValue("--color-aboutme")} 
+
+                <Side 
+                    id="Experience"
+                    title="Experience"
+                    url={assets.models.experience}
+                    color={getCssVariableValue("--color-experience")} 
                     mode={mode}
                     room={room}
                     setRoom={setRoom}
@@ -80,10 +81,10 @@ export default function Teseract({
                 <group ref={gear1} position={[1, 0, 0]} rotation={[0, -Math.PI/2, 0]}>
                     <group position={[1, 0, 0]}>
                         <Side 
-                            id="Experience"
-                            title="Experience"
-                            url={assets.models.experience}
-                            color={getCssVariableValue("--color-experience")} 
+                            id="Studies"
+                            title="Studies"
+                            url={assets.models.studies}
+                            color={getCssVariableValue("--color-studies")} 
                             mode={mode}
                             room={room}
                             setRoom={setRoom}
@@ -124,11 +125,11 @@ export default function Teseract({
                 </group>
                 <group ref={gear4} position={[-1, 0, 0]} rotation={[0, Math.PI/2, 0]}>
                     <group position={[-1, 0, 0]}>
-                        <Side 
-                            id="Studies"
-                            title="Studies"
-                            url={assets.models.studies}
-                            color={getCssVariableValue("--color-studies")} 
+                        <Side
+                            id="AboutMe"
+                            title="About Me"
+                            url={assets.models.aboutme}
+                            color={getCssVariableValue("--color-aboutme")} 
                             mode={mode}
                             room={room}
                             setRoom={setRoom}

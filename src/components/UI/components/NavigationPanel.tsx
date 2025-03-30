@@ -24,10 +24,10 @@ const NavigationPanel = ({ mode, setMode, room, setRoom, isNavPanelVisible }: Na
 
   return (
     <div className={`navigation-panel ${isNavPanelVisible ? 'show' : ''}`}>
-      <ButtonNav text={"EXPERIENCE"} selected={room === "Experience"} onClick={() => goToRoom('Experience')}/>
-      <ButtonNav text={"PROJECTS"} selected={room === "Projects"} onClick={() => goToRoom('Projects')}/>
-      <ButtonNav text={"STUDIES"} selected={room === "Studies"} onClick={() => goToRoom('Studies')}/>
       <ButtonNav text={"ABOUT ME"} selected={room === "AboutMe"} onClick={() => goToRoom('AboutMe')}/>
+      <ButtonNav text={"EXPERIENCE"} selected={room === "Experience"} onClick={() => goToRoom('Experience')}/>
+      <ButtonNav text={"STUDIES"} selected={room === "Studies"} onClick={() => goToRoom('Studies')}/>
+      <ButtonNav text={"PROJECTS"} selected={room === "Projects"} onClick={() => goToRoom('Projects')}/>
       <ButtonNav text={"CONTACT"} selected={room === "Contact"} onClick={() => goToRoom('Contact')}/>
       <ButtonNav text={"CV"} selected={room === "CV"} onClick={() => goToRoom('CV')}/>
     </div>

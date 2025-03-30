@@ -45,13 +45,16 @@ const MainUI = ({
       }}
     >
       <RoomUI room={room} setRoom={setRoom} />
-      {mode === "OpenBox" ? (
-        <OpenBoxUI setMode={setMode}/>
-      ) : mode === "Teseract" ? (
-        <TeseractUI setMode={setMode}/>
-      ) : mode === "InitialBox" ? (
-        <InitialBoxUI/>
-      ) : null}
+      <RoomUI room={room} setRoom={setRoom} />
+      {!room && (
+        mode === "OpenBox" ? (
+          <OpenBoxUI setMode={setMode} />
+        ) : mode === "Teseract" ? (
+          <TeseractUI setMode={setMode} />
+        ) : mode === "InitialBox" ? (
+          <InitialBoxUI />
+        ) : null
+      )}
 
       <ButtonIcon
         style={{
