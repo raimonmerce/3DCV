@@ -1,6 +1,10 @@
 import cvEng from './images/cvEng.png';
 import cvEsp from './images/cvEsp.png';
 import face from './images/face.jpg';
+import link3d from './images/3dlink.png';
+import tfg1 from './images/tfg1.png';
+import tfm1 from './images/tfm1.png';
+import rayengine from './images/tfg2.png';
 
 import aboutme from './models/aboutme.glb';
 import contact from './models/contact.glb';
@@ -51,7 +55,11 @@ export const assets = {
     images: {
         cvEng: cvEng,
         cvEsp: cvEsp,
-        face: face
+        face: face,
+        tfg1: tfg1,
+        tfm1: tfm1,
+        rayengine: rayengine,
+        link3d: link3d
     },
     models: {
         aboutme: aboutme,

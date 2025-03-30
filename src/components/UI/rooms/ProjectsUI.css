@@ -1,0 +1,81 @@
+.projects-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(1, 1fr);
+  padding: 12px;
+}
+
+@media (min-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0;
+  }
+}
+
+.project-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 16px;
+  color: black
+}
+
+.project-description {
+  color: #6b7280;
+  margin-top: 8px;
+  /* font-size: 10px; */
+}
+
+.skills-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.skill-item {
+  margin: 8px;
+}
+
+.skill-icon {
+  width: 25px;
+  height: 25px;
+  transition: transform 0.7s ease-in-out;
+}
+
+.skill-icon:hover {
+  transform: rotate(360deg);
+}
+
+.learn-more-button {
+  display: inline-block;
+  background-color: #3b82f6;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 16px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.learn-more-button:hover {
+  background-color: #2563eb;
+}
