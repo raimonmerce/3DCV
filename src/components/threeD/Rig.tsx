@@ -19,7 +19,8 @@ export default function Rig({
     room,
     setInTransition
 }: RigProps) {
-    const { controls, scene } = useThree();      
+    const { controls, scene, size } = useThree();      
+    const isMobile = size.width < 768;      
     const center: [number, number] = [1, 0];
     const radius = 5; 
 
@@ -35,11 +36,16 @@ export default function Rig({
             const angle = Math.atan2(dy, dx);
             const clampedX = cx + radius * Math.cos(angle);
             const clampedY = cy + radius * Math.sin(angle);
-            (controls as any).setTarget(
-                clampedX, clampedY, z - 4, true
-            );
-            (controls as any).setPosition(
-                clampedX, clampedY, z, true
+            const distTarget = isMobile? 8 : 4;
+            // (controls as any).setTarget(
+            //     clampedX, clampedY, z - distTarget, true
+            // );
+            // (controls as any).setPosition(
+            //     clampedX, clampedY, z, true
+            // );
+            (controls as any).setLookAt(
+                clampedX, clampedY, z,
+                clampedX, clampedY, z - distTarget, true
             );
         }
       };
@@ -82,8 +88,8 @@ export default function Rig({
                     maxPolarAngle: Math.PI / 2,
                     minAzimuthAngle: 0,
                     maxAzimuthAngle: 0,
-                    minDistance: 1,
-                    maxDistance: 5,
+                    minDistance: isMobile? 3 : 1,
+                    maxDistance: isMobile? 10 : 5,
                 };
             case "Teseract":
                 return {
@@ -128,7 +134,12 @@ export default function Rig({
     }
 
     async function openTransition() {
-        await (controls as any)?.setLookAt(1, 0, 4, 1, 0, -1, true);
+        if (isMobile){
+            console.log("Is mobile")
+            await (controls as any)?.setLookAt(1, 0, 8, 1, 0, -1, true);
+        } else {
+            await (controls as any)?.setLookAt(1, 0, 4, 1, 0, -1, true);
+        }
     }
 
     async function teseractTransition() {
@@ -136,14 +147,12 @@ export default function Rig({
     }
 
     async function roomTransition(room: RoomType) {
-        //setTransition(true)
         const active = scene.getObjectByName(room);
         if (active) {
             active.parent?.localToWorld(position.set(0, 0, 1));
             active.parent?.localToWorld(focus.set(0, 0, -1));
         }
         await (controls as any)?.setLookAt(...position.toArray(), ...focus.toArray(), true);
-        //setInitialCameraPoint({x: position.x, y: position.y, z: position.z})
         setInTransition(false)
     }
 

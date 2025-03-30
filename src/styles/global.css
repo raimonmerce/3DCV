@@ -10,6 +10,7 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
+    font-size: var(--standard-text-size)
 }
 
 :root {
@@ -20,5 +21,6 @@ body {
     --color-cv: #D9A848;
     --color-experience: #88A300;
     --color-projects: #B4DB55; 
-    --color-studies: #E377C6; 
+    --color-studies: #E377C6;
+    --standard-text-size: 15px;
 }
