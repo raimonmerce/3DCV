@@ -3,6 +3,7 @@ import { useCursor, MeshPortalMaterial } from '@react-three/drei';
 import { Mesh, MeshStandardMaterial } from 'three';
 import * as TWEEN from '@tweenjs/tween.js';
 import { ModeType, RoomType } from '@/types/types';
+import { getCssVariableValue } from '../../utils/utils';
 import Room from './Room';
 
 type SideProps = {
@@ -126,7 +127,7 @@ export default function Side({
 
       <mesh rotation={[0,0,0]}>
         <planeGeometry args={[2,2]} />
-        <meshPhongMaterial color={'#98FB98'} side={1}/>
+        <meshPhongMaterial color={getCssVariableValue("--color-cube")} side={1}/>
       </mesh>
     </group>
   );

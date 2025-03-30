@@ -21,7 +21,7 @@
 
 .instrucctions-text {
   margin-bottom: 5px;
-  animation: blink 2.5s infinite alternate;
+  animation: blink 1.5s infinite alternate;
 }
 
 .footer p {
@@ -30,9 +30,6 @@
 
 @keyframes blink {
   0% {
-      opacity: 0;
-  }
-  70% {
       opacity: 0;
   }
   100% {

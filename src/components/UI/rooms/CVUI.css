@@ -44,7 +44,7 @@
 }
 
 .cv-button:hover {
-  background-color: #B58F3D;
+  background-color: var(--color-cv-dark);
   transform: scale(1.05);
 }
 

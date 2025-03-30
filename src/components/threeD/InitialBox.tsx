@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Outlines } from '@react-three/drei';
 import { ModeType } from '@/types/types';
 import * as TWEEN from '@tweenjs/tween.js';
+import { getCssVariableValue } from '../../utils/utils';
 
 type InitialBoxProps = {
     setMode: React.Dispatch<React.SetStateAction<ModeType>>;
@@ -54,7 +55,7 @@ export default function InitialBox({
             onClick={handleClick}
         >
             <boxGeometry args={[2, 2, 2]} />
-            <meshPhongMaterial color={'#98FB98'} />
+            <meshPhongMaterial color={getCssVariableValue("--color-cube")} />
             {hovered && 
             <Outlines 
                 thickness={10} 

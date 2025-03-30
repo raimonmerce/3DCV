@@ -14,11 +14,15 @@ body {
 }
 
 :root {
+    /* --color-cube: #35522B; */
+    --color-cube: #35522B; 
     --color-background1: #FF6F61;
     --color-background2: #FFD3B6;
     --color-aboutme: #C677E3;
     --color-contact: #77C6E3;
+    --color-contact-dark: #5699B6;
     --color-cv: #D9A848;
+    --color-cv-dark: #B58F3D;
     --color-experience: #88A300;
     --color-projects: #B4DB55; 
     --color-studies: #E377C6;

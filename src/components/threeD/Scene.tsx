@@ -30,9 +30,9 @@ export default function Scene({
             camera={{ position: [2000, 2000, 2000]}}
         >
             <Tween />
-            <ambientLight intensity={0.5} />
-            <pointLight intensity={10} position={[3, 3, 3]} />
-            <pointLight intensity={10} position={[-3, -3, -3]} />
+            <ambientLight intensity={4} />
+            <pointLight intensity={20} position={[3, 3, 3]} />
+            <pointLight intensity={20} position={[-3, -3, -3]} />
             <Teseract 
                 mode={mode} setMode={setMode}
                 room={room} setRoom={setRoom}

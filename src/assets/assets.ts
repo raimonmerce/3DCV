@@ -1,6 +1,6 @@
 import cvEng from './images/cvEng.png';
 import cvEsp from './images/cvEsp.png';
-import face from './images/face.jpg';
+import face from './images/face.jpeg';
 import link3d from './images/3dlink.png';
 import tfg1 from './images/tfg1.png';
 import tfm1 from './images/tfm1.png';
