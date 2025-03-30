@@ -32,7 +32,7 @@
 }
 
 .project-title {
-  font-size: 1.25rem;
+  font-size: var(--h2-text-size);
   font-weight: 600;
   margin-top: 16px;
   color: black
@@ -41,41 +41,61 @@
 .project-description {
   color: #6b7280;
   margin-top: 8px;
-  /* font-size: 10px; */
+  text-align: justify;
 }
 
-.skills-container {
+.project-skills-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 16px;
 }
 
-.skill-item {
+.project-skill-item {
   margin: 8px;
 }
 
-.skill-icon {
+.project-skill-icon {
   width: 25px;
   height: 25px;
   transition: transform 0.7s ease-in-out;
 }
 
-.skill-icon:hover {
-  transform: rotate(360deg);
+.project-skill-icon:hover {
+  animation: rotateAnimationProjects 0.7s ease-in-out;
 }
 
 .learn-more-button {
   display: inline-block;
-  background-color: #3b82f6;
-  color: #ffffff;
+  background-color: var(--color-projects);
+  color: white;
+  font-size: 1rem;
   padding: 10px 20px;
-  border-radius: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   text-decoration: none;
   margin-top: 16px;
-  transition: background-color 0.3s ease-in-out;
+  transition: all 0.3s ease;
 }
 
 .learn-more-button:hover {
-  background-color: #2563eb;
+  background-color: #8BA744;
+  transform: scale(1.05);
 }
+
+@keyframes rotateAnimationProjects {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+

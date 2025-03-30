@@ -45,7 +45,6 @@ const MainUI = ({
       }}
     >
       <RoomUI room={room} setRoom={setRoom} />
-      <RoomUI room={room} setRoom={setRoom} />
       {!room && (
         mode === "OpenBox" ? (
           <OpenBoxUI setMode={setMode} />

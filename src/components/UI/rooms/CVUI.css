@@ -32,7 +32,7 @@
 }
 
 .cv-button {
-  background-color: #D9A848;
+  background-color: var(--color-cv);
   color: white;
   font-size: 1rem;
   padding: 12px 20px;

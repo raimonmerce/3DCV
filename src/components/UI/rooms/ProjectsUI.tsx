@@ -12,10 +12,10 @@ export default function ProjectsUI() {
           <h2 className="project-title">{project.title}</h2>
           <p className="project-description">{project.description}</p>
           {project.skills && project.skills.length > 0 && (
-            <div className="skills-container">
+            <div className="project-skills-container">
               {project.skills.map((skill, index) => (
-                <div key={index} className="skill-item">
-                  <img src={skill} alt={`skill-icon-${index}`} className="skill-icon" />
+                <div key={index} className="project-skill-item">
+                  <img src={skill} alt={`skill-icon-${index}`} className="project-skill-icon" />
                 </div>
               ))}
             </div>
