@@ -37,6 +37,12 @@ export default function RoomUI({ room, setRoom }: RoomUIProps) {
         setDisplayedRoom(room);
         if (room) {
           setFadeIn(true);
+          setTimeout(() => {
+            const roomContent = document.querySelector('.room-content');
+            if (roomContent) {
+              roomContent.scrollTop = 0;
+            }
+          }, 50);
         }
       }, fadeDuration);
       return () => clearTimeout(timer);
