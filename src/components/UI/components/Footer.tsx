@@ -8,9 +8,9 @@ const Footer = ({ instruction }: ButtonIconProps) => {
   return (
     <div className="footer">
       {instruction &&
-        <div className="footer-text">{instruction}</div>
+        <div className="footer-text instrucctions-text">{instruction}</div>
       }
-      <p>Made by Raimon Mercé</p>
+      <div className="footer-text">Made by Raimon Mercé</div>
     </div>
   );
 };

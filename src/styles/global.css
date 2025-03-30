@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 .maindiv {
-    width: 100vw; 
+    width: 100vw;
     height: 100vh; 
     overflow-x: hidden;
-    overflow-y: auto;  
+    overflow-y: auto;
 }
 
 body {
@@ -23,4 +23,13 @@ body {
     --color-projects: #B4DB55; 
     --color-studies: #E377C6;
     --standard-text-size: 15px;
+}
+
+.vertical-timeline-element-title {
+    font-size: 20px;
+}
+
+.vertical-timeline-element-subtitle {
+    font-size: 18px;
+    font-weight: normal;
 }

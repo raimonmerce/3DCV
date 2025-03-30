@@ -37,12 +37,6 @@ export default function Rig({
             const clampedX = cx + radius * Math.cos(angle);
             const clampedY = cy + radius * Math.sin(angle);
             const distTarget = isMobile? 8 : 4;
-            // (controls as any).setTarget(
-            //     clampedX, clampedY, z - distTarget, true
-            // );
-            // (controls as any).setPosition(
-            //     clampedX, clampedY, z, true
-            // );
             (controls as any).setLookAt(
                 clampedX, clampedY, z,
                 clampedX, clampedY, z - distTarget, true
@@ -135,7 +129,6 @@ export default function Rig({
 
     async function openTransition() {
         if (isMobile){
-            console.log("Is mobile")
             await (controls as any)?.setLookAt(1, 0, 8, 1, 0, -1, true);
         } else {
             await (controls as any)?.setLookAt(1, 0, 4, 1, 0, -1, true);

@@ -43,7 +43,14 @@
   overflow-y: auto;
   max-height: 100%;
   width: 100%;
-  padding-right: 10px;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+@media (max-width: 768px) {
+  .room-container {
+    top: 52%;
+    width: 80vw;
+    height: 65vh;
+  }
 }

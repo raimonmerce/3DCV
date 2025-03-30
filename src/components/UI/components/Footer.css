@@ -4,7 +4,6 @@
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  /* font-size: var(--standard-text-size); */
   text-align: center;
   opacity: 0.8;
   display: flex;
@@ -15,10 +14,12 @@
 
 .footer-text {
   position: relative;
-  /* font-size: var(--standard-text-size); */
   color: white;
   text-align: center;
   white-space: nowrap;
+}
+
+.instrucctions-text {
   margin-bottom: 5px;
   animation: blink 2.5s infinite alternate;
 }
