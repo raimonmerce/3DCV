@@ -1,10 +1,12 @@
 import cvEng from './images/cvEng.png';
 import cvEsp from './images/cvEsp.png';
-import face from './images/face.jpeg';
+import face from './images/profile.png';
 import link3d from './images/3dlink.png';
 import tfg1 from './images/tfg1.png';
 import tfm1 from './images/tfm1.png';
+import raimonmerce from './images/raimonmerce.png';
 import rayengine from './images/tfg2.png';
+import xescomerce from './images/xescomerce.png';
 
 import aboutme from './models/aboutme.glb';
 import contact from './models/contact.glb';
@@ -36,11 +38,13 @@ import linkedin from './svg/linkedin.svg';
 import location from './svg/location.svg';
 import logo from './svg/logo.svg';
 import menu from './svg/menu.svg';
+import n8n from './svg/n8n.svg';
 import opengl from './svg/opengl.svg';
 import php from './svg/php.svg';
 import python from './svg/python.svg';
 import react from './svg/react.svg';
 import symfony from './svg/symfony.svg';
+import tailwind from './svg/tailwind.svg';
 import threejs from './svg/threejs.svg';
 import tmrw from './svg/tmrw.svg';
 import ts from './svg/ts.svg';
@@ -58,8 +62,10 @@ export const assets = {
         face: face,
         tfg1: tfg1,
         tfm1: tfm1,
+        raimonmerce: raimonmerce,
         rayengine: rayengine,
-        link3d: link3d
+        link3d: link3d,
+        xescomerce: xescomerce
     },
     models: {
         aboutme: aboutme,
@@ -94,11 +100,13 @@ export const assets = {
         location: location,
         logo: logo,
         menu: menu,
+        n8n: n8n,
         opengl: opengl,
         php: php,
         python: python,
         react: react,
         symfony: symfony,
+        tailwind: tailwind,
         threejs: threejs,
         tmrw: tmrw,
         ts: ts,

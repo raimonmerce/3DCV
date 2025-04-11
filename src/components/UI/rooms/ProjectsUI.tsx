@@ -15,7 +15,12 @@ export default function ProjectsUI() {
             <div className="project-skills-container">
               {project.skills.map((skill, index) => (
                 <div key={index} className="project-skill-item">
-                  <img src={skill} alt={`skill-icon-${index}`} className="project-skill-icon" />
+                  <img
+                    src={skill.icon}
+                    alt={`skill-icon-${index}`}
+                    className="project-skill-icon"
+                  />
+                  <p className="project-skill-name">{skill.name}</p>
                 </div>
               ))}
             </div>
@@ -44,10 +49,36 @@ const projects = [
     image: assets.images.link3d,
     link: "https://cai.stage.unionavatars.unionavatars.com/",
     skills: [
-      assets.svg.ts,
-      assets.svg.react,
-      assets.svg.threejs,
-      assets.svg.blender
+      { icon: assets.svg.ts, name: 'TypeScript' },
+      { icon: assets.svg.react, name: 'React' },
+      { icon: assets.svg.threejs, name: 'Three.js' },
+      { icon: assets.svg.blender, name: 'Blender' },
+      { icon: assets.svg.n8n, name: 'n8n' },
+    ]
+  },
+  {
+    title: "Raimon Merce",
+    description:
+      "This personal portfolio website showcases my skills in 3D development, React, and web design. Built as a one-page site, it integrates uses Three.js, React Three Fiber and Drei for 3D utilities, Tween for smooth animations, and Blender to create custom models.",
+    image: assets.images.raimonmerce,
+    link: "https://www.raimonmerce.com/",
+    skills: [
+      { icon: assets.svg.ts, name: 'TypeScript' },
+      { icon: assets.svg.react, name: 'React' },
+      { icon: assets.svg.threejs, name: 'Three.js' },
+      { icon: assets.svg.blender, name: 'Blender' }
+    ]
+  },
+  {
+    title: "Xesco Mercé",
+    description:
+      "The Xesco Mercé portfolio is a personal website built to highlight the artistic works of Xesco Mercé.",
+    image: assets.images.xescomerce,
+    link: "https://www.xescomerce.com/",
+    skills: [
+      { icon: assets.svg.ts, name: 'TypeScript' },
+      { icon: assets.svg.react, name: 'React' },
+      { icon: assets.svg.tailwind, name: 'Tailwind' },
     ]
   },
   {
@@ -56,9 +87,9 @@ const projects = [
       "A Unity plugin that allows non-programmers to create immersive workplace safety simulations, improving training and risk assessment.",
     image: assets.images.tfg1,
     skills: [
-      assets.svg.unity,
-      assets.svg.csh,
-      assets.svg.blender,
+      { icon: assets.svg.unity, name: 'Unity' },
+      { icon: assets.svg.csh, name: 'C#' },
+      { icon: assets.svg.blender, name: 'Blender' },
     ]
   },
   {
@@ -68,8 +99,8 @@ const projects = [
     image: assets.images.tfm1,
     link: "https://github.com/raimonmerce/SUSP_MAIN",
     skills: [
-      assets.svg.python,
-      assets.svg.js,
+      { icon: assets.svg.python, name: 'Python' },
+      { icon: assets.svg.js, name: 'JavaScript' },
     ]
   },
   {
@@ -79,8 +110,8 @@ const projects = [
     image: assets.images.rayengine,
     link: "https://github.com/raimonmerce/RayEngine",
     skills: [
-      assets.svg.cpp,
-      assets.svg.opengl,
+      { icon: assets.svg.cpp, name: 'C++' },
+      { icon: assets.svg.opengl, name: 'OpenGL' },
     ]
   }
 ];

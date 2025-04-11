@@ -28,7 +28,7 @@
   width: 100%;
   height: 160px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .project-title {
@@ -63,6 +63,13 @@
 
 .project-skill-icon:hover {
   animation: rotateAnimationProjects 0.7s ease-in-out;
+}
+
+.project-skill-name {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  color: black;
+  font-size: 12px;
 }
 
 .learn-more-button {

@@ -4,18 +4,18 @@ import './AboutMeUI.css';
 
 const AboutMeUI: React.FC = () => {
   const skillsList = [
-    assets.svg.ts,
-    assets.svg.js,
-    assets.svg.react,
-    assets.svg.threejs,
-    assets.svg.blender,
-    assets.svg.unity,
-    assets.svg.opengl,
-    assets.svg.python,
-    assets.svg.csh,
-    assets.svg.cpp,
-    assets.svg.php,
-    assets.svg.symfony,
+    { icon: assets.svg.ts, name: 'TypeScript' },
+    { icon: assets.svg.js, name: 'JavaScript' },
+    { icon: assets.svg.react, name: 'React' },
+    { icon: assets.svg.threejs, name: 'Three.js' },
+    { icon: assets.svg.blender, name: 'Blender' },
+    { icon: assets.svg.unity, name: 'Unity' },
+    { icon: assets.svg.opengl, name: 'OpenGL' },
+    { icon: assets.svg.python, name: 'Python' },
+    { icon: assets.svg.csh, name: 'C#' },
+    { icon: assets.svg.cpp, name: 'C++' },
+    { icon: assets.svg.php, name: 'PHP' },
+    { icon: assets.svg.symfony, name: 'Symfony' },
   ];
 
   return (
@@ -51,10 +51,11 @@ const AboutMeUI: React.FC = () => {
           {skillsList.map((skill, index) => (
             <div key={index} className="skill-item">
               <img
-                src={skill}
+                src={skill.icon}
                 alt={`skill-icon-${index}`}
                 className="skill-icon"
               />
+              <p className="skill-name">{skill.name}</p>
             </div>
           ))}
         </div>
