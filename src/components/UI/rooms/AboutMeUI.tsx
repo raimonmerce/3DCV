@@ -21,6 +21,7 @@ const AboutMeUI: React.FC = () => {
   return (
     <>
       <div
+        className="main-description"
         style={{ textAlign: 'justify', fontSize: '0.9rem', lineHeight: '1.5', minHeight: '280px' }}
       >
         <img
@@ -31,14 +32,14 @@ const AboutMeUI: React.FC = () => {
         <p>
           Hi, I’m Ray, a 3D developer with 4 years of experience. I specialize in
           creating immersive experiences and interactive 3D content, particularly using
-          <b>Three.js</b> for <b>front-end development</b>. My work in 3D graphics allows me to blend
+          <b> Three.js</b> for <b> front-end development</b>. My work in 3D graphics allows me to blend
           creativity with technology to build visually stunning applications.
-          <br/><br/>
-          Alongside 3D front-end development, I’ve also worked in <b>Unity</b>, <b>Back-End</b>, and
-          <b>VR development</b>, expanding my skills across multiple fields. These areas have
+          <br /><br />
+          Alongside 3D front-end development, I’ve also worked in <b> Unity</b>, <b> Back-End</b>, and
+          <b> VR development</b>, expanding my skills across multiple fields. These areas have
           allowed me to approach projects from different angles, offering a broad skill
           set to tackle diverse challenges.
-          <br/><br/>
+          <br /><br />
           I’m always excited to learn and explore new technologies, pushing myself to
           grow and adapt in an ever-evolving industry. Let’s connect and create
           something incredible together!

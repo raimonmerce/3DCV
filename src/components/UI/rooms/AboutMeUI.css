@@ -35,6 +35,24 @@
   object-fit: contain;
 }
 
+.main-description {
+  text-align: justify;
+  font-size: 0.9rem;
+  line-height: 0.5;
+  min-height: 280px;
+}
+
+@media (max-width: 768px) {
+  .portrait {
+    order: -1; /* Move the image to the top */
+  }
+  .main-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @keyframes rotateAnimation {
   0% {
     transform: rotate(0deg);
