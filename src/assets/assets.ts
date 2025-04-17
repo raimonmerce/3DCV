@@ -7,6 +7,7 @@ import tfm1 from './images/tfm1.png';
 import raimonmerce from './images/raimonmerce.png';
 import rayengine from './images/tfg2.png';
 import xescomerce from './images/xescomerce.png';
+import webglTest from './images/webgl.jpeg';
 
 import aboutme from './models/aboutme.glb';
 import contact from './models/contact.glb';
@@ -54,6 +55,7 @@ import ujm from './svg/ujm.svg';
 import unionavatars from './svg/unionavatars.svg';
 import unity from './svg/unity.svg';
 import upc from './svg/upc.svg';
+import webgl from './svg/webgl.svg';
 
 export const assets = {
     images: {
@@ -65,7 +67,8 @@ export const assets = {
         raimonmerce: raimonmerce,
         rayengine: rayengine,
         link3d: link3d,
-        xescomerce: xescomerce
+        xescomerce: xescomerce,
+        webglTest: webglTest
     },
     models: {
         aboutme: aboutme,
@@ -115,6 +118,7 @@ export const assets = {
         ujm: ujm,
         unionavatars: unionavatars,
         unity: unity,
-        upc: upc
+        upc: upc,
+        webgl: webgl
     }
 };

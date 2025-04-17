@@ -82,6 +82,18 @@ const projects = [
     ]
   },
   {
+    title: "Mobile WebGL for mobile shader visualizer",
+    description:
+      "A test to learn WebGL and React Native, where using Expo I made a simple interface to select and configure basic geometry primitives. It has a small WebGL engine with Renderer, Material, Geometry, Camera, etc and handmade shaders",
+    image: assets.images.webglTest,
+    link: "https://github.com/raimonmerce/modelVisualizerApp",
+    skills: [
+      { icon: assets.svg.ts, name: 'TypeScript' },
+      { icon: assets.svg.react, name: 'React Native' },
+      { icon: assets.svg.webgl, name: 'WebGL' },
+    ]
+  },
+  {
     title: "Unity Plugin for Work Risk Simulations",
     description:
       "A Unity plugin that allows non-programmers to create immersive workplace safety simulations, improving training and risk assessment.",
