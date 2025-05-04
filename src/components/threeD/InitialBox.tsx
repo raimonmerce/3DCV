@@ -13,6 +13,7 @@ export default function InitialBox({
 }: InitialBoxProps) {
     const [hovered, setHovered] = useState(false);
     const [outlineOpacity, setOutlineOpacity] = useState(0);
+    const rootStyles = getComputedStyle(document.documentElement);
 
     useEffect(() => {
         if (!hovered) {
@@ -61,7 +62,7 @@ export default function InitialBox({
                 thickness={10} 
                 transparent 
                 opacity={outlineOpacity} 
-                color="#777" 
+                color={rootStyles.getPropertyValue('--color-outline').trim()} 
             />}
         </mesh>
     );

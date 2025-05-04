@@ -32,6 +32,7 @@ export default function Side({
   const [isHovered, setIsHovered] = useState(false);
   const portal = useRef<any>(null);
   const emissiveMesh = useRef<Mesh>(null);
+  const rootStyles = getComputedStyle(document.documentElement);
 
   useCursor(isHovered);
 
@@ -114,7 +115,7 @@ export default function Side({
               <ringGeometry args={[1.414, 1.5, 4]} />
               <meshBasicMaterial 
                 side={0} 
-                color={"#777"}
+                color={rootStyles.getPropertyValue('--color-outline').trim()}
                 depthTest={false}
                 depthWrite={false}
                 transparent
