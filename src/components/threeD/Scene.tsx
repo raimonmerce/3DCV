@@ -44,7 +44,7 @@ export default function Scene({
                 room={room}
                 setInTransition={setInTransition}
             />
-            <Stats/>
+            {/* <Stats/> */}
         </Canvas>
     );
 }
