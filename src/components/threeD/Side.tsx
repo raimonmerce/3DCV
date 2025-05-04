@@ -112,10 +112,9 @@ export default function Side({
           {isHovered && (mode === 'OpenBox' || mode === 'Teseract') && (
             <mesh ref={emissiveMesh} position={[0, 0, -0.01]} rotation={[0, 0, Math.PI/4]}>
               <ringGeometry args={[1.414, 1.5, 4]} />
-              <meshStandardMaterial 
+              <meshBasicMaterial 
                 side={0} 
-                emissive={"white"} 
-                emissiveIntensity={1}
+                color={"#777"}
                 depthTest={false}
                 depthWrite={false}
                 transparent

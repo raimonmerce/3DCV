@@ -3,7 +3,6 @@
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  color: white;
   text-align: center;
   opacity: 0.8;
   display: flex;
@@ -14,9 +13,10 @@
 
 .footer-text {
   position: relative;
-  color: white;
   text-align: center;
+  color: var(--color-text);
   white-space: nowrap;
+  font-size: 1.2em;
 }
 
 .instrucctions-text {

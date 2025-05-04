@@ -12,10 +12,9 @@
 .icon-image {
   margin-right: 8px;
   transition: all 0.2s ease;
-  filter: brightness(0) saturate(100%) invert(100%);
 }
 
 .icon-image.hovered {
-  filter: brightness(0) saturate(100%) invert(60%);
+  filter: brightness(0) saturate(100%) invert(40%);
   transform: scale(1.1);
 }

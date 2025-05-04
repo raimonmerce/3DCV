@@ -14,18 +14,19 @@ body {
 }
 
 :root {
-    /* --color-cube: #35522B; */
-    --color-cube: #35522B; 
-    --color-background1: #FF6F61;
-    --color-background2: #FFD3B6;
-    --color-aboutme: #C677E3;
-    --color-contact: #77C6E3;
-    --color-contact-dark: #5699B6;
-    --color-cv: #D9A848;
-    --color-cv-dark: #B58F3D;
-    --color-experience: #88A300;
-    --color-projects: #B4DB55; 
-    --color-studies: #E377C6;
+    --color-cube: #FFA477; 
+    --color-background1: #f5f7fa;  /* very light gray-blue */
+    --color-background2: #dbeeff; 
+    --color-aboutme: #FF7C8A;
+    --color-contact: #72C9F4;
+    --color-contact-dark: #72C9F4;
+    --color-cv: #FFD65C;
+    --color-cv-dark: #FFD65C;
+    --color-experience: #C08CFF;
+    --color-projects: #7BE495; 
+    --color-studies: #FFA477;
+    --color-text: #333;
+    --color-outline: #777;
     --standard-text-size: 15px;
     --h3-text-size: 18px;
     --h2-text-size: 20px;

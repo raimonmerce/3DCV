@@ -61,7 +61,7 @@ export default function InitialBox({
                 thickness={10} 
                 transparent 
                 opacity={outlineOpacity} 
-                color="white" 
+                color="#777" 
             />}
         </mesh>
     );
