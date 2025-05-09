@@ -25,7 +25,6 @@ export default function Rig({
     const radius = 5; 
 
     const enforceBoundary = useCallback(() => {
-        console.log("enforceBoundary")
         const [cx, cy] = center;
         const { x, y, z } = (controls as any).getPosition();
       
@@ -52,7 +51,6 @@ export default function Rig({
     });
 
     const cameraConfig = useMemo(() => {
-        console.log("getCameraConfig")
         if (room) {
             return {
                 mouseButtons: {
