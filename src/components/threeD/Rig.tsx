@@ -42,7 +42,7 @@ export default function Rig({
                 clampedX, clampedY, z - distTarget, true
             );
         }
-    }, [controls, isMobile]);
+    }, [controls, isMobile, center]);
 
     useFrame(() => {
         if (mode === 'OpenBox' && !room) {
@@ -122,53 +122,59 @@ export default function Rig({
         }
     }, [mode, room, isMobile]);
 
-    const transitions = useMemo(() => ({
-        initial: async () => {
-            if (!controls) return;
-            setInTransition(true);
-            await (controls as any).setLookAt(3, 8, 3, 0, 8, -1, false);
-            await (controls as any).setLookAt(-3, 3, 3, 0, 0, -1, true);
-            setInTransition(false);
-        },
-        open: async () => {
-            if (!controls) return;
-            const z = isMobile ? 8 : 4;
-            await (controls as any).setLookAt(1, 0, z, 1, 0, -1, true);
-        },
-        teseract: async () => {
-            if (!controls) return;
-            await (controls as any).setLookAt(3, 3, 3, 0, 0, -1, true);
-        },
-        room: async (room: RoomType) => {
-            if (!controls || !scene) return;
-            setInTransition(true);
-            const active = scene.getObjectByName(room);
-            if (active) {
+    const transitionInitial = useCallback(async () => {
+        if (!controls) return;
+        setInTransition(true);
+        await (controls as any).setLookAt(3, 8, 3, 0, 8, -1, false);
+        await (controls as any).setLookAt(-3, 3, 3, 0, 0, -1, true);
+        setInTransition(false);
+    }, [controls, setInTransition]);
+
+    const transitionOpen = useCallback(async () => {
+        if (!controls) return;
+        const z = isMobile ? 8 : 4;
+        await (controls as any).setLookAt(1, 0, z, 1, 0, -1, true);
+    }, [controls]);
+
+    const transitionTeseract = useCallback(async () => {
+        if (!controls) return;
+        await (controls as any).setLookAt(3, 3, 3, 0, 0, -1, true);
+    }, [controls]);
+
+    // Modify transitionRoom to not invoke it immediately in useMemo
+    const transitionRoom = useCallback(async (room: RoomType) => {
+        if (!controls || !scene) return;
+        setInTransition(true);
+        const active = scene.getObjectByName(room);
+        if (active) {
             active.parent?.localToWorld(position.set(0, 0, 1));
             active.parent?.localToWorld(focus.set(0, 0, -1));
-            }
-            await (controls as any).setLookAt(...position.toArray(), ...focus.toArray(), true);
-            setInTransition(false);
         }
-    }), [controls, scene, isMobile, position, focus, setInTransition]);
+        await (controls as any).setLookAt(...position.toArray(), ...focus.toArray(), true);
+        setInTransition(false);
+    }, [controls, scene, position, focus, setInTransition]);
 
     useEffect(() => {
         if (room) {
-            transitions.room(room);
+            setInTransition(true)
+            transitionRoom(room)
         } else {
             switch (mode) {
                 case "InitialBox":
-                transitions.initial();
-                break;
+                    setInTransition(true)
+                    transitionInitial();
+                    break;
                 case "OpenBox":
-                transitions.open();
-                break;
+                    transitionOpen()
+                    break;
                 case "Teseract":
-                transitions.teseract();
-                break;
+                    transitionTeseract()
+                    break;
+                default:
+                    break;
             }
-        }
-    }, [mode, room, transitions]);
+        }  
+    }, [mode, room, transitionInitial, transitionOpen, transitionTeseract]);
 
     return (
         <CameraControls 

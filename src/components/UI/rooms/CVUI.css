@@ -23,7 +23,7 @@
 }
 
 .cv-image {
-  width: 30vh;
+  width: 30dvh;
   height: auto;
   border-radius: 10px;
   object-fit: cover;

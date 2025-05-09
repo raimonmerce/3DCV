@@ -49,7 +49,7 @@
 @media (max-width: 768px) {
   .room-container {
     top: 52%;
-    width: 80vw;
-    height: 65vh;
+    width: 80dvw;
+    height: 65dvh;
   }
 }

@@ -25,7 +25,7 @@ export default function Scene({
         <Canvas 
             style={{
                 background: `linear-gradient(to bottom, ${getCssVariableValue("--color-background1")}, ${getCssVariableValue("--color-background2")})`,
-                height: '100vh',
+                height: '100dvh',
             }}
             camera={{ position: [2000, 2000, 2000]}}
         >

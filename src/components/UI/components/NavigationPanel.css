@@ -1,7 +1,7 @@
 .navigation-panel {
     position: absolute;
     right: 30px;
-    top: 15vh;
+    top: 15dvh;
     display: flex;
     flex-direction: column;
     gap: 10px;
