@@ -57,7 +57,7 @@ const projects = [
     ]
   },
   {
-    title: "Raimon Merce",
+    title: "Raimon Mercé",
     description:
       "This personal portfolio website showcases my skills in 3D development, React, and web design. Built as a one-page site, it integrates uses Three.js, React Three Fiber and Drei for 3D utilities, Tween for smooth animations, and Blender to create custom models.",
     image: assets.images.raimonmerce,
@@ -72,7 +72,7 @@ const projects = [
   {
     title: "Xesco Mercé",
     description:
-      "The Xesco Mercé portfolio is a personal website built to highlight the artistic works of Xesco Mercé.",
+      "The Xesco Mercé portfolio is a simple personal website built to highlight the artistic works of the artist.",
     image: assets.images.xescomerce,
     link: "https://www.xescomerce.com/",
     skills: [
