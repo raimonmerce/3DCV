@@ -32,6 +32,7 @@ export default function Teseract({
     const box = useRef<Mesh>(null);
 
     useEffect(() => {
+        console.log("Changed mode", mode)
         if (!gear1.current || !['InitialBox', 'OpenBox', 'Teseract'].includes(mode)) return;
         
         const modeConfig = {
