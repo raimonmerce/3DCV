@@ -68,7 +68,7 @@ const MainUI = ({
           room
             ? null
             : mode === 'OpenBox' || mode === 'Teseract'
-            ? 'Double click to enter a Portal'
+            ? 'Double click to enter'
             : mode === 'InitialBox'
             ? 'Click the Box to start'
             : null
