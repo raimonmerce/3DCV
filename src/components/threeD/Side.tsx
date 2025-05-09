@@ -115,7 +115,7 @@ export default function Side({
               <ringGeometry args={[1.414, 1.5, 4]} />
               <meshBasicMaterial 
                 side={0} 
-                color={rootStyles.getPropertyValue('--color-outline').trim()}
+                color={rootStyles.getPropertyValue('--color-cube-outline').trim()}
                 depthTest={false}
                 depthWrite={false}
                 transparent
@@ -127,7 +127,7 @@ export default function Side({
 
       <mesh rotation={[0,0,0]}>
         <planeGeometry args={[2,2]} />
-        <meshPhongMaterial color={getCssVariableValue("--color-cube")} side={1}/>
+        <meshStandardMaterial color={getCssVariableValue("--color-cube")} side={1}/>
       </mesh>
     </group>
   );

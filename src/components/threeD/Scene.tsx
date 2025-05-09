@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-// import { Stats } from "@react-three/drei";
+import { Stats } from "@react-three/drei";
 import Teseract from "./Teseract";
 import Tween from "./Tween";
 import Rig from './Rig';  
@@ -31,8 +31,8 @@ export default function Scene({
         >
             <Tween />
             <ambientLight intensity={4} />
-            <pointLight intensity={20} position={[3, 3, 3]} />
-            <pointLight intensity={20} position={[-3, -3, -3]} />
+            <pointLight intensity={20} position={[2, 2, 2]} />
+            <pointLight intensity={20} position={[-2, -2, -2]} />
             <Teseract 
                 mode={mode} setMode={setMode}
                 room={room} setRoom={setRoom}
@@ -44,7 +44,7 @@ export default function Scene({
                 room={room}
                 setInTransition={setInTransition}
             />
-            {/* <Stats/> */}
+            <Stats/>
         </Canvas>
     );
 }

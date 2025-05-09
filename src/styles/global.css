@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --color-cube: #FFA477; 
+    --color-cube: rgb(219,105,44); 
+    --color-cube-outline: rgb(82,173,224);
     --color-background1: #f5f7fa;  /* very light gray-blue */
-    --color-background2: #dbeeff; 
+    --color-background2: #dbeeff;
     --color-aboutme: #FF7C8A;
     --color-contact: #72C9F4;
     --color-cv: #FFD65C;
@@ -24,10 +25,19 @@
     overflow-y: auto;
 }
 
+h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+}
+
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: var(--standard-text-size)
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-text);
 }
 
 .vertical-timeline-element-title {

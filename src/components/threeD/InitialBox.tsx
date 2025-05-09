@@ -56,13 +56,13 @@ export default function InitialBox({
             onClick={handleClick}
         >
             <boxGeometry args={[2, 2, 2]} />
-            <meshPhongMaterial color={getCssVariableValue("--color-cube")} />
+            <meshStandardMaterial color={getCssVariableValue("--color-cube")} />
             {hovered && 
             <Outlines 
                 thickness={10} 
                 transparent 
                 opacity={outlineOpacity} 
-                color={rootStyles.getPropertyValue('--color-outline').trim()} 
+                color={rootStyles.getPropertyValue('--color-cube-outline').trim()} 
             />}
         </mesh>
     );
