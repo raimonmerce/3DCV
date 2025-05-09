@@ -32,7 +32,7 @@
 }
 
 .cv-button {
-  background-color: var(--color-cv);
+  background-color: var(--color-text);
   color: white;
   font-size: 1rem;
   padding: 12px 20px;
@@ -44,7 +44,7 @@
 }
 
 .cv-button:hover {
-  background-color: var(--color-cv-dark);
+  background-color: var(--color-outline);
   transform: scale(1.05);
 }
 

@@ -93,7 +93,7 @@ export default function ExperienceUI() {
           icon={<img src={assets.svg.cimne} alt="icon" style={{ width: "100%", height: "100%", borderRadius: "50%"  }} />}
         >
           <h3 className="vertical-timeline-element-title">VR/AR Developer</h3>
-          <h4 className="vertical-timeline-element-subtitle">European Central Bank</h4>
+          <h4 className="vertical-timeline-element-subtitle">CIMNE</h4>
           <ul>
             <li>Developing a project in Unity (<b>C#</b>) for AR devices (<b>Magic Leap</b>) to show the capabilities and features of AR technology.</li>
             <li>Setting up a 3D multi-projector room in order to stream 2D/3D content from any device using a local network.</li>

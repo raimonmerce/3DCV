@@ -1,27 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-.maindiv {
-    width: 100vw;
-    height: 100vh; 
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    font-size: var(--standard-text-size)
-}
-
 :root {
     --color-cube: #FFA477; 
     --color-background1: #f5f7fa;  /* very light gray-blue */
     --color-background2: #dbeeff; 
     --color-aboutme: #FF7C8A;
     --color-contact: #72C9F4;
-    --color-contact-dark: #72C9F4;
     --color-cv: #FFD65C;
-    --color-cv-dark: #FFD65C;
     --color-experience: #C08CFF;
     --color-projects: #7BE495; 
     --color-studies: #FFA477;
@@ -30,6 +16,18 @@ body {
     --standard-text-size: 15px;
     --h3-text-size: 18px;
     --h2-text-size: 20px;
+}
+.maindiv {
+    width: 100vw;
+    height: 100vh; 
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--standard-text-size)
 }
 
 .vertical-timeline-element-title {

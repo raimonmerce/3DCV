@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 import ButtonIcon from './components/ButtonIcon';
 import Footer from './components/Footer';
 import {assets} from '../../assets/assets'
-
+import "./MainUI.css"
 type MainUIProps = {
   mode: ModeType;
   setMode: React.Dispatch<React.SetStateAction<ModeType>>;
@@ -33,16 +33,7 @@ const MainUI = ({
 
   return (
     <div
-      style={{
-        position: 'absolute',
-        zIndex: 1,
-        color: 'white',
-        width: '100vw',
-        height: '100vh',
-        pointerEvents: 'none',
-        overflowX: 'hidden',
-        overflowY: 'auto', 
-      }}
+      className={"main-div"}
     >
       <RoomUI room={room} setRoom={setRoom} />
       {!room && (

@@ -52,7 +52,7 @@
 
 .form-input:focus, .form-textarea:focus {
   outline: none;
-  border-color: var(--color-contact);
+  border-color: var(--color-outline);
 }
 
 .form-textarea {
@@ -62,7 +62,7 @@
 
 .submit-button {
   padding: 12px 20px;
-  background-color: var(--color-contact);
+  background-color: var(--color-text);
   color: white;
   font-size: 16px;
   border: none;
@@ -72,7 +72,7 @@
 }
 
 .submit-button:hover {
-  background-color: var(--color-contact-dark);
+  background-color: var(--color-outline);
 }
 
 .submit-button:focus {

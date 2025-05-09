@@ -7,3 +7,17 @@
 .goRight {
   text-align: left;
 }
+
+.vertical-timeline-element-icon.shadow-size-small {
+  box-shadow: 0 0 0 4px var(--color-text), inset 0 1px 0 rgba(0, 0, 0, .08), 0 2px 0 4px rgba(0, 0, 0, .05);
+}
+
+.vertical-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: var(--color-text);
+}
