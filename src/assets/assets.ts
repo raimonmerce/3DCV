@@ -2,6 +2,7 @@ import cvEng from './images/cvEng.png';
 import cvEsp from './images/cvEsp.png';
 import face from './images/profile.png';
 import link3d from './images/3dlink.png';
+import zombieSurvival from './images/zombieSurvival.png';
 import tfg1 from './images/tfg1.png';
 import tfm1 from './images/tfm1.png';
 import raimonmerce from './images/raimonmerce.png';
@@ -42,6 +43,7 @@ import menu from './svg/menu.svg';
 import n8n from './svg/n8n.svg';
 import opengl from './svg/opengl.svg';
 import php from './svg/php.svg';
+import pixijs from './svg/pixijs.svg';
 import python from './svg/python.svg';
 import react from './svg/react.svg';
 import symfony from './svg/symfony.svg';
@@ -66,6 +68,7 @@ export const assets = {
         tfm1: tfm1,
         raimonmerce: raimonmerce,
         rayengine: rayengine,
+        zombieSurvival: zombieSurvival,
         link3d: link3d,
         xescomerce: xescomerce,
         webglTest: webglTest
@@ -106,6 +109,7 @@ export const assets = {
         n8n: n8n,
         opengl: opengl,
         php: php,
+        pixijs: pixijs,
         python: python,
         react: react,
         symfony: symfony,

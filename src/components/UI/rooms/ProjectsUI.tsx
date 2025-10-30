@@ -70,6 +70,18 @@ const projects = [
     ]
   },
   {
+    title: "Zombie Survivor",
+    description:
+      "A small survival game made in 2D using PixiJS, React, TS in colaboraton with other creators",
+    image: assets.images.zombieSurvival,
+    link: "https://github.com/raimonmerce/PixiJSGame",
+    skills: [
+      { icon: assets.svg.ts, name: 'TypeScript' },
+      { icon: assets.svg.react, name: 'React' },
+      { icon: assets.svg.pixijs, name: 'Pixi JS' }
+    ]
+  },
+  {
     title: "Xesco Mercé",
     description:
       "The Xesco Mercé portfolio is a simple personal website built to highlight the artistic works of the artist.",
