@@ -8,6 +8,7 @@ import ExperienceUI from './rooms/ExperienceUI';
 import ProjectsUI from './rooms/ProjectsUI';
 import StudiesUI from './rooms/StudiesUI';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './RoomUI.css';
 
 type RoomUIProps = {
@@ -21,6 +22,7 @@ export default function RoomUI({ room, setRoom }: RoomUIProps) {
   const [displayedRoom, setDisplayedRoom] = useState<RoomType | null>(room);
   const [fadeIn, setFadeIn] = useState(false);
   const [fadeInFirst, setFadeInFirst] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!displayedRoom && room) {
@@ -33,6 +35,8 @@ export default function RoomUI({ room, setRoom }: RoomUIProps) {
     if (room !== displayedRoom) {
       setFadeIn(false);
       setFadeInFirst(false);
+      if (room) navigate('/' + room?.toLowerCase());
+      else navigate('/');
       const timer = setTimeout(() => {
         setDisplayedRoom(room);
         if (room) {
